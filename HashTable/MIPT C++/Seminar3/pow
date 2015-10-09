@@ -1,0 +1,18 @@
+#include <iostream>
+
+unsigned int pow(int a, int b);
+int main(){
+    std::cout<<pow(2, 9);
+    return 0;
+}
+
+unsigned int pow (int a, int b) {
+//T(n) = O(log(n)), M(n) = O(1);
+    if (b == 0) return 1;
+    if (b % 2 == 1) return pow (a, b-1) * a;
+    else {
+        int temp = pow (a, b/2);
+        return temp * temp;
+    }
+    
+}

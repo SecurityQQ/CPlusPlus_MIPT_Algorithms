@@ -1,0 +1,72 @@
+Оптимизация рекурсии qSort:
+
+int * L[N];
+int * r[N];
+L[0] = l;
+r[0] = r;
+int count = 1;
+
+int curL = L[count - 1];
+int curR = r[count - 1];
+count--;
+int mid = Partition(curL, curR);
+int l = count++;
+L[count - 1] = curL;
+R[count - 1] = mid;
+count++;
+
+
+//! ================
+
+QUEUE:
+
+void Enqueue (int)
+int Dequeue ();
+int buffersize;
+int tail, head;
+
+
+
+struct CRange {
+int L;
+int R;
+}
+CQueue <CRange> ranges;
+ranges.Add(CRange(L; R));
+while (!ranges.isEmpty) {
+Crange ranges = ranges.Dequeue ()
+if (ranges.R - ranges.L <= 1) {
+    if (ranges.R > ranges.L )swap(ranges.R, ranges.L);
+}
+int mid = Partition (range L, range R);
+ranges.Enqueue (CRange (range.L, mid));
+ranges.Enqueue(Cramge(mid, range));
+}
+
+
+
+void mergeSort (int * arr; int L; int R) {
+if (R - L <= 1) {
+if arr[L] > arr[R] swap(arr[L], arr[R]) return;
+}
+mergeSort (arr, L, R / 2 + L / 2);
+mergeSort (arr, R / 2 + L / 2, R );
+merge(arr, L, L / 2 + R / 2, R);
+}
+
+
+
+6) Добавляем (mid - i) на каждом участке рекурсии
+
+
+
+7)heap:
+
+heapify (siftdown) берется макс ребенок, свопится heapify();
+siftup
+
+Создание кучи :
+Начиная с N / 2  - 1 делаем siftdown
+
+Extract (a , minChild(a))
+Add (a + minChild(a));

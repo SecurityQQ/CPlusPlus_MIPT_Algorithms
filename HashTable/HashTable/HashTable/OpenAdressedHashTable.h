@@ -1,0 +1,163 @@
+//
+//  OpenAdressedHashTable.h
+//  HashTable
+//
+//  Created by Александр Малышев on 22.03.15.
+//  Copyright (c) 2015 SecurityQQ. All rights reserved.
+//
+
+#ifndef __HashTable__OpenAdressedHashTable__
+#define __HashTable__OpenAdressedHashTable__
+
+#include <stdio.h>
+#include <vector>
+#include <assert.h>
+#include <iostream>
+#include <memory.h>
+
+typedef unsigned long long ull;
+#define NullString ""
+#define DelString "DEL"
+#define defaultTableSize (8)
+
+
+
+class OpenAdressedHashTable {
+public:
+    
+    OpenAdressedHashTable();
+    OpenAdressedHashTable(ull tableSize);
+    ~OpenAdressedHashTable();
+    
+    void add      (const std::string& key);
+    void remove   (const std::string& key);
+    bool contains (const std::string& key);
+    
+    
+    
+private:
+    
+    ull hash(const std::string &key);
+    ull tryToHash(const std::string &key, ull i);
+    void rehash();
+    
+    
+    std::vector<std::string> table;
+    
+    void growHashTable();
+    
+    
+};
+
+OpenAdressedHashTable:: OpenAdressedHashTable() {
+    for( ull i = 0; i < defaultTableSize; ++i ) {
+        table.push_back(NullString);
+    }
+}
+OpenAdressedHashTable:: OpenAdressedHashTable( ull tableSize) {
+    for( ull i = 0;i < tableSize; ++i ) {
+        table.push_back(NullString);
+    }
+}
+
+OpenAdressedHashTable:: ~OpenAdressedHashTable() {
+
+}
+
+ull OpenAdressedHashTable::tryToHash(const std::string &key, ull i){
+    //FIX ME:
+    return (ull)(hash(key) + 0.5 * i + 0.5 * i * i) % table.size();
+}
+
+ull OpenAdressedHashTable::hash(const std::string &key){
+    char *str = new char[key.size()];
+    memcpy(str, key.data(), key.length() + 1);
+    ull hash = 0;
+    for (ull i = 0; i < key.length(); ++i) {
+        hash += (unsigned char)(str[i]);
+        hash += (hash << 10);
+        hash ^= (hash >> 6);
+    }
+    delete [] str;
+    hash += (hash << 3);
+    hash ^= (hash >> 11);
+    hash += (hash << 15);
+    
+    return hash % table.size();
+}
+
+
+void OpenAdressedHashTable:: rehash() {
+    std::vector<std::string> keys;
+    for( ull i = 0; i < table.size(); ++i ) {
+        if( table[i] != DelString && table[i] != NullString ) {
+            keys.push_back(table[i]);
+        }
+    }
+    
+    growHashTable();
+    
+    for( ull i = 0; i < keys.size(); ++i ) {
+        add(keys[i]);
+    }
+    
+}
+
+void OpenAdressedHashTable:: growHashTable() {
+    for( ull i = 0; i < table.size(); ++i ) {
+        table[i] = NullString;
+    }
+    ull appendingSize = table.size();
+    // FIXME:
+//    table.insert(table.size(), table.begin(), table.end());
+    for( ull i = 0; i < appendingSize; ++i ) {
+        table.push_back(NullString);
+    }
+    
+}
+
+
+void OpenAdressedHashTable:: add(const std::string &key) {
+    
+    for( ull i = 0; i < table.size() ; ++i ) {
+        ull index = tryToHash(key, i);
+        
+        if( table[index] == NullString || table[index] == DelString) {
+            table[index] = key;
+            return;
+        }
+    }
+    
+    rehash();
+    add(key);
+}
+
+bool OpenAdressedHashTable:: contains(const std::string &key) {
+    
+    for( ull i = 0; i < table.size(); ++i ) {
+        ull index = tryToHash(key, i);
+        if( table[index] == key ) {
+            return true;
+        }
+        if( table[index] == NullString ) {
+            return false;
+        }
+    }
+    return false;
+}
+
+void OpenAdressedHashTable:: remove(const std::string &key) {
+    for( ull i = 0; i < table.size(); ++i ) {
+        ull index = tryToHash(key, i);
+        if( table[index] == NullString ) {
+            return;
+        }
+        if( table[index] == key ) {
+            table[index] = DelString;
+        }
+        
+    }
+}
+
+
+#endif /* defined(__HashTable__OpenAdressedHashTable__) */

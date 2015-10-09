@@ -1,0 +1,18 @@
+stdin: (1+2) * 3 + 4
+stdout: 1
+stack : (
+
+stdout: 12
+stack : (+)
+
+stdout: 12+
+stack :
+
+stdout: 12+3
+stack : *
+
+stdout: 12+3*4
+stack : +
+
+stdout: 12+3*4+
+stack : +

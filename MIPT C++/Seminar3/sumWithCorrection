@@ -1,0 +1,27 @@
+float sum (int sz){
+float sum = 0, correction = 0;
+for (int i = 1; i < sz; i++){
+float temp = 1/(float)i /(float)i -correction;
+float tempSum = sum + temp;
+correction = (tempSum - sum) - temp;
+sum = tempSum;
+}
+return sum + correction;
+}
+
+int main() {
+float upToSum = 0, downToSum = 0;
+const int N = 10000000;
+for (int i = 1 ; i < N; ++i) {
+upToSum += 1/(float) i * 1/(float)i;
+}
+for (int i = N ; i > 0; --i) {
+downToSum += 1/(float)i * 1/(float)i;
+}
+float realSum = M_PI * M_PI / 6;
+std::cout<<realSum - upToSum <<std::endl;
+std::cout<<realSum - downToSum <<std::endl;
+std::cout<<downToSum - upToSum <<std::endl;
+std::cout<< realSum- sum(10000000);
+return 0;
+}

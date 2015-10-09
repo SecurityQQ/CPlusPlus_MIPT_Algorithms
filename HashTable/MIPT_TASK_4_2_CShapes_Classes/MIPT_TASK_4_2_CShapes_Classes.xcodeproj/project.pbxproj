@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		950A309B1A8E97270022CC16 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950A309A1A8E97270022CC16 /* main.cpp */; };
+		950A30A31A8E97380022CC16 /* CShapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950A30A11A8E97380022CC16 /* CShapes.cpp */; };
+		95584BE11A8FBF2800C4C5E0 /* CCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BDF1A8FBF2800C4C5E0 /* CCircle.cpp */; };
+		95584BE51A8FBF8500C4C5E0 /* CPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BE31A8FBF8500C4C5E0 /* CPolygon.cpp */; };
+		95584BE91A8FBFC500C4C5E0 /* CConvexPolygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BE71A8FBFC500C4C5E0 /* CConvexPolygon.cpp */; };
+		95584BED1A8FBFEA00C4C5E0 /* CRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BEB1A8FBFEA00C4C5E0 /* CRectangle.cpp */; };
+		95584BF11A8FC02A00C4C5E0 /* CSquare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BEF1A8FC02A00C4C5E0 /* CSquare.cpp */; };
+		95584BF51A8FC06F00C4C5E0 /* CTriangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BF31A8FC06F00C4C5E0 /* CTriangle.cpp */; };
+		95584BF91A8FC09B00C4C5E0 /* CRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95584BF71A8FC09B00C4C5E0 /* CRange.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		950A30951A8E97270022CC16 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		950A30971A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MIPT_TASK_4_2_CShapes_Classes; sourceTree = BUILT_PRODUCTS_DIR; };
+		950A309A1A8E97270022CC16 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		950A30A11A8E97380022CC16 /* CShapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CShapes.cpp; sourceTree = "<group>"; };
+		950A30A21A8E97380022CC16 /* CShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CShapes.h; sourceTree = "<group>"; };
+		95584BDF1A8FBF2800C4C5E0 /* CCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCircle.cpp; sourceTree = "<group>"; };
+		95584BE01A8FBF2800C4C5E0 /* CCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCircle.h; sourceTree = "<group>"; };
+		95584BE31A8FBF8500C4C5E0 /* CPolygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CPolygon.cpp; sourceTree = "<group>"; };
+		95584BE41A8FBF8500C4C5E0 /* CPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPolygon.h; sourceTree = "<group>"; };
+		95584BE71A8FBFC500C4C5E0 /* CConvexPolygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CConvexPolygon.cpp; sourceTree = "<group>"; };
+		95584BE81A8FBFC500C4C5E0 /* CConvexPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CConvexPolygon.h; sourceTree = "<group>"; };
+		95584BEB1A8FBFEA00C4C5E0 /* CRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRectangle.cpp; sourceTree = "<group>"; };
+		95584BEC1A8FBFEA00C4C5E0 /* CRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRectangle.h; sourceTree = "<group>"; };
+		95584BEF1A8FC02A00C4C5E0 /* CSquare.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSquare.cpp; sourceTree = "<group>"; };
+		95584BF01A8FC02A00C4C5E0 /* CSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSquare.h; sourceTree = "<group>"; };
+		95584BF31A8FC06F00C4C5E0 /* CTriangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTriangle.cpp; sourceTree = "<group>"; };
+		95584BF41A8FC06F00C4C5E0 /* CTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTriangle.h; sourceTree = "<group>"; };
+		95584BF71A8FC09B00C4C5E0 /* CRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CRange.cpp; sourceTree = "<group>"; };
+		95584BF81A8FC09B00C4C5E0 /* CRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRange.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		950A30941A8E97270022CC16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		950A308E1A8E97270022CC16 = {
+			isa = PBXGroup;
+			children = (
+				950A30991A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */,
+				950A30981A8E97270022CC16 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		950A30981A8E97270022CC16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				950A30971A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		950A30991A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */ = {
+			isa = PBXGroup;
+			children = (
+				95584BFA1A8FC0BB00C4C5E0 /* CLine */,
+				950A30A41A8E973B0022CC16 /* CShapes */,
+				950A309A1A8E97270022CC16 /* main.cpp */,
+			);
+			path = MIPT_TASK_4_2_CShapes_Classes;
+			sourceTree = "<group>";
+		};
+		950A30A41A8E973B0022CC16 /* CShapes */ = {
+			isa = PBXGroup;
+			children = (
+				950A30A21A8E97380022CC16 /* CShapes.h */,
+				950A30A11A8E97380022CC16 /* CShapes.cpp */,
+				95584BE21A8FBF2C00C4C5E0 /* CCircle */,
+				95584BE61A8FBF8900C4C5E0 /* CPolygon */,
+				95584BEA1A8FBFCE00C4C5E0 /* CConvexPolygon */,
+				95584BEE1A8FBFFB00C4C5E0 /* CRectangle */,
+				95584BF21A8FC02E00C4C5E0 /* CSquare */,
+				95584BF61A8FC07200C4C5E0 /* CTriangle */,
+			);
+			name = CShapes;
+			sourceTree = "<group>";
+		};
+		95584BE21A8FBF2C00C4C5E0 /* CCircle */ = {
+			isa = PBXGroup;
+			children = (
+				95584BE01A8FBF2800C4C5E0 /* CCircle.h */,
+				95584BDF1A8FBF2800C4C5E0 /* CCircle.cpp */,
+			);
+			name = CCircle;
+			sourceTree = "<group>";
+		};
+		95584BE61A8FBF8900C4C5E0 /* CPolygon */ = {
+			isa = PBXGroup;
+			children = (
+				95584BE41A8FBF8500C4C5E0 /* CPolygon.h */,
+				95584BE31A8FBF8500C4C5E0 /* CPolygon.cpp */,
+			);
+			name = CPolygon;
+			sourceTree = "<group>";
+		};
+		95584BEA1A8FBFCE00C4C5E0 /* CConvexPolygon */ = {
+			isa = PBXGroup;
+			children = (
+				95584BE81A8FBFC500C4C5E0 /* CConvexPolygon.h */,
+				95584BE71A8FBFC500C4C5E0 /* CConvexPolygon.cpp */,
+			);
+			name = CConvexPolygon;
+			sourceTree = "<group>";
+		};
+		95584BEE1A8FBFFB00C4C5E0 /* CRectangle */ = {
+			isa = PBXGroup;
+			children = (
+				95584BEC1A8FBFEA00C4C5E0 /* CRectangle.h */,
+				95584BEB1A8FBFEA00C4C5E0 /* CRectangle.cpp */,
+			);
+			name = CRectangle;
+			sourceTree = "<group>";
+		};
+		95584BF21A8FC02E00C4C5E0 /* CSquare */ = {
+			isa = PBXGroup;
+			children = (
+				95584BF01A8FC02A00C4C5E0 /* CSquare.h */,
+				95584BEF1A8FC02A00C4C5E0 /* CSquare.cpp */,
+			);
+			name = CSquare;
+			sourceTree = "<group>";
+		};
+		95584BF61A8FC07200C4C5E0 /* CTriangle */ = {
+			isa = PBXGroup;
+			children = (
+				95584BF41A8FC06F00C4C5E0 /* CTriangle.h */,
+				95584BF31A8FC06F00C4C5E0 /* CTriangle.cpp */,
+			);
+			name = CTriangle;
+			sourceTree = "<group>";
+		};
+		95584BFA1A8FC0BB00C4C5E0 /* CLine */ = {
+			isa = PBXGroup;
+			children = (
+				95584BF81A8FC09B00C4C5E0 /* CRange.h */,
+				95584BF71A8FC09B00C4C5E0 /* CRange.cpp */,
+			);
+			name = CLine;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		950A30961A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 950A309E1A8E97270022CC16 /* Build configuration list for PBXNativeTarget "MIPT_TASK_4_2_CShapes_Classes" */;
+			buildPhases = (
+				950A30931A8E97270022CC16 /* Sources */,
+				950A30941A8E97270022CC16 /* Frameworks */,
+				950A30951A8E97270022CC16 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIPT_TASK_4_2_CShapes_Classes;
+			productName = MIPT_TASK_4_2_CShapes_Classes;
+			productReference = 950A30971A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		950A308F1A8E97270022CC16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = SecurityQQ;
+				TargetAttributes = {
+					950A30961A8E97270022CC16 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 950A30921A8E97270022CC16 /* Build configuration list for PBXProject "MIPT_TASK_4_2_CShapes_Classes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 950A308E1A8E97270022CC16;
+			productRefGroup = 950A30981A8E97270022CC16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				950A30961A8E97270022CC16 /* MIPT_TASK_4_2_CShapes_Classes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		950A30931A8E97270022CC16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95584BE51A8FBF8500C4C5E0 /* CPolygon.cpp in Sources */,
+				95584BED1A8FBFEA00C4C5E0 /* CRectangle.cpp in Sources */,
+				95584BE91A8FBFC500C4C5E0 /* CConvexPolygon.cpp in Sources */,
+				95584BE11A8FBF2800C4C5E0 /* CCircle.cpp in Sources */,
+				950A309B1A8E97270022CC16 /* main.cpp in Sources */,
+				95584BF91A8FC09B00C4C5E0 /* CRange.cpp in Sources */,
+				950A30A31A8E97380022CC16 /* CShapes.cpp in Sources */,
+				95584BF11A8FC02A00C4C5E0 /* CSquare.cpp in Sources */,
+				95584BF51A8FC06F00C4C5E0 /* CTriangle.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		950A309C1A8E97270022CC16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		950A309D1A8E97270022CC16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		950A309F1A8E97270022CC16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		950A30A01A8E97270022CC16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		950A30921A8E97270022CC16 /* Build configuration list for PBXProject "MIPT_TASK_4_2_CShapes_Classes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				950A309C1A8E97270022CC16 /* Debug */,
+				950A309D1A8E97270022CC16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		950A309E1A8E97270022CC16 /* Build configuration list for PBXNativeTarget "MIPT_TASK_4_2_CShapes_Classes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				950A309F1A8E97270022CC16 /* Debug */,
+				950A30A01A8E97270022CC16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 950A308F1A8E97270022CC16 /* Project object */;
+}

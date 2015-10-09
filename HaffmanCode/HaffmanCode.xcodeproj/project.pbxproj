@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9549CF9F1A399C8F004EB5F1 /* HaffmanMethods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9549CF9D1A399C8F004EB5F1 /* HaffmanMethods.cpp */; };
+		955D50FA1A33899400C95157 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 955D50F91A33899400C95157 /* main.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		955D50F41A33899400C95157 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9549CF991A386CA0004EB5F1 /* Heap\Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Heap\\Array.h"; sourceTree = "<group>"; };
+		9549CF9D1A399C8F004EB5F1 /* HaffmanMethods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HaffmanMethods.cpp; sourceTree = "<group>"; };
+		9549CF9E1A399C8F004EB5F1 /* HaffmanMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HaffmanMethods.h; sourceTree = "<group>"; };
+		9549CFA01A3A0049004EB5F1 /* BinarySearchTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinarySearchTree.hpp; sourceTree = "<group>"; };
+		9549CFA11A3A0049004EB5F1 /* CNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNode.h; sourceTree = "<group>"; };
+		9549CFA91A3A00DB004EB5F1 /* CNodeArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CNodeArray.h; sourceTree = "<group>"; };
+		95527B9A1A3DA07000D0CC9F /* DecodedEncodedFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DecodedEncodedFile.txt; path = FilesForWorking/DecodedEncodedFile.txt; sourceTree = "<group>"; };
+		95527B9B1A3DA07000D0CC9F /* testTextFile.hf */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = file; name = testTextFile.hf; path = "/Users/Security/Coding/MIPT C++/HaffmanCode/HaffmanCode/FilesForWorking/testTextFile.hf"; sourceTree = "<absolute>"; };
+		95527B9C1A3DA07000D0CC9F /* testTextFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testTextFile.txt; path = FilesForWorking/testTextFile.txt; sourceTree = "<group>"; };
+		955D50F61A33899400C95157 /* HaffmanCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HaffmanCode; sourceTree = BUILT_PRODUCTS_DIR; };
+		955D50F91A33899400C95157 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		95E5DD861A382FE900AA81E5 /* WorkingWithFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingWithFile.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		955D50F31A33899400C95157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9549CF971A386B0B004EB5F1 /* FilesForWorking */ = {
+			isa = PBXGroup;
+			children = (
+				95527B9A1A3DA07000D0CC9F /* DecodedEncodedFile.txt */,
+				95527B9B1A3DA07000D0CC9F /* testTextFile.hf */,
+				95527B9C1A3DA07000D0CC9F /* testTextFile.txt */,
+			);
+			name = FilesForWorking;
+			sourceTree = "<group>";
+		};
+		955D50ED1A33899400C95157 = {
+			isa = PBXGroup;
+			children = (
+				955D50F81A33899400C95157 /* HaffmanCode */,
+				955D50F71A33899400C95157 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		955D50F71A33899400C95157 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				955D50F61A33899400C95157 /* HaffmanCode */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		955D50F81A33899400C95157 /* HaffmanCode */ = {
+			isa = PBXGroup;
+			children = (
+				9549CF971A386B0B004EB5F1 /* FilesForWorking */,
+				955D51031A34D22A00C95157 /* UsingHeaders */,
+				955D50F91A33899400C95157 /* main.cpp */,
+				95C826D11A3F13DC00853B83 /* NotUsingHeaders */,
+			);
+			path = HaffmanCode;
+			sourceTree = "<group>";
+		};
+		955D51031A34D22A00C95157 /* UsingHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				95C826D21A3F13FD00853B83 /* Structures */,
+				95C826D31A3F141F00853B83 /* Methods */,
+			);
+			name = UsingHeaders;
+			sourceTree = "<group>";
+		};
+		95C826D11A3F13DC00853B83 /* NotUsingHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				9549CFA01A3A0049004EB5F1 /* BinarySearchTree.hpp */,
+			);
+			name = NotUsingHeaders;
+			sourceTree = "<group>";
+		};
+		95C826D21A3F13FD00853B83 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				9549CF991A386CA0004EB5F1 /* Heap\Array.h */,
+				9549CFA91A3A00DB004EB5F1 /* CNodeArray.h */,
+				9549CFA11A3A0049004EB5F1 /* CNode.h */,
+			);
+			name = Structures;
+			sourceTree = "<group>";
+		};
+		95C826D31A3F141F00853B83 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				95E5DD861A382FE900AA81E5 /* WorkingWithFile.h */,
+				9549CF9E1A399C8F004EB5F1 /* HaffmanMethods.h */,
+				9549CF9D1A399C8F004EB5F1 /* HaffmanMethods.cpp */,
+			);
+			name = Methods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		955D50F51A33899400C95157 /* HaffmanCode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 955D50FD1A33899400C95157 /* Build configuration list for PBXNativeTarget "HaffmanCode" */;
+			buildPhases = (
+				955D50F21A33899400C95157 /* Sources */,
+				955D50F31A33899400C95157 /* Frameworks */,
+				955D50F41A33899400C95157 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HaffmanCode;
+			productName = HaffmanCode;
+			productReference = 955D50F61A33899400C95157 /* HaffmanCode */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		955D50EE1A33899400C95157 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = SecurityQQ;
+				TargetAttributes = {
+					955D50F51A33899400C95157 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 955D50F11A33899400C95157 /* Build configuration list for PBXProject "HaffmanCode" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 955D50ED1A33899400C95157;
+			productRefGroup = 955D50F71A33899400C95157 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				955D50F51A33899400C95157 /* HaffmanCode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		955D50F21A33899400C95157 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9549CF9F1A399C8F004EB5F1 /* HaffmanMethods.cpp in Sources */,
+				955D50FA1A33899400C95157 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		955D50FB1A33899400C95157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		955D50FC1A33899400C95157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		955D50FE1A33899400C95157 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		955D50FF1A33899400C95157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		955D50F11A33899400C95157 /* Build configuration list for PBXProject "HaffmanCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				955D50FB1A33899400C95157 /* Debug */,
+				955D50FC1A33899400C95157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		955D50FD1A33899400C95157 /* Build configuration list for PBXNativeTarget "HaffmanCode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				955D50FE1A33899400C95157 /* Debug */,
+				955D50FF1A33899400C95157 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 955D50EE1A33899400C95157 /* Project object */;
+}

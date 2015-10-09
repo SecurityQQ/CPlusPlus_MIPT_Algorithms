@@ -1,0 +1,126 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <functional>
+
+#define part partitionByMiddle(arr, startOfPartition, endOfPartition - 1, compInt)
+#define show;  for (int i = 0; i < n ; ++ i) { \
+                    printf("%d ", arr[i]);\
+                    }\
+                    printf("\n");
+using namespace std;
+
+
+struct cords {
+    int x, y;
+};
+
+bool compCords (cords &a, cords &b);
+bool compInt (int &p, int &p2) {
+    return p < p2;
+}
+template <typename T>
+T middle(T &var1, T &var2, T &var3, bool comp(T &firstCompElement, T &secondCompElement));
+template <typename T>
+int partitionByMiddle (T* arr, int l, int r, bool comp(T &firstCompElement, T &secondCompElement));
+
+void quicksort(cords p, int l, int r, bool comp(cords &p1, cords &p2));
+void intQuickSort (int * arr, int l, int r, bool comp(int &p, int &p2));
+
+
+//const char *inputFilePath = "/Users/Security/Desktop/MIPT C++/MIPT C++/input.txt";
+//const char *outputFilePath = "/Users/Security/Desktop/MIPT C++/MIPT C++/output.txt";
+
+int main() {
+    int n, k, p = -1;
+    scanf("%d %d", &n, &k);
+    int * arr = (int *) malloc (n * sizeof(int));
+    for (int i = 0 ; i < n; ++i) {
+        scanf("%d", &arr[i]);
+    }
+
+    int startOfPartition = 0, endOfPartition = n;
+    p = part;
+
+    while ((p != k)&&(startOfPartition <= endOfPartition)) {
+            while ((p > k) && (startOfPartition <= endOfPartition)) {
+                endOfPartition = p;
+                p = part;
+            }
+            while ((p < k) && (startOfPartition <= endOfPartition)) {
+                startOfPartition = p;
+                p = part;
+            }
+    }
+
+    printf("%d\n", arr[p]);
+    return 0;
+}
+
+
+
+
+template <typename T>
+int partitionByMiddle (T* arr, int l, int r, bool comp(T &firstCompElement, T &secondCompElement)) {
+    int m = (l+r) >> 1;
+    int i = l;
+    int j = r;
+    m = middle(l, r, m, compInt);
+    while (i <= j) {
+        while (comp(arr[i], arr[m]))
+            i++;
+        while (!comp(arr[j], arr[m]))
+            j--;
+        if (i <= j) {
+            swap(arr[i], arr[j]);
+            i++;
+            j--;
+        }
+    }
+    return m;
+}
+template <typename T>
+T middle(T &var1, T &var2, T &var3, bool comp(T &firstCompElement, T &secondCompElement)) {
+    if ((comp(var1, var2) && comp(var2, var3)) || ((comp(var3, var2) && comp(var2, var1)))) return var2;
+    if ((comp(var2, var1) && comp(var1, var3)) || ((comp(var3, var1) && comp(var1, var2)))) return var1;
+    if ((comp(var1, var3) && comp (var3, var2)) || (comp(var2, var3) && comp (var3, var1)))  return var3;
+    srand(time(NULL));
+    //get lucky!
+    return (rand() % 2) ? var1 : ((rand() % 2) ? var2 : var3);
+}
+
+//void intQuickSort (int * arr, int l, int r) {
+//    int i = l + 1;
+//    int j = r;
+//    while (i <= j) {
+//        while (
+//        ++i;
+//    }
+//    while (arr[j] > p)
+//}
+//
+//void quickSort(cords arr[], int left, int right, bool comp(cords &a, cords &b)) {
+//    int i = left, j = right;
+//    cords tmp;
+//
+//    /* partition */
+//    cords pivot = arr[(left + right) / 2];
+//    while (i <= j) {
+//        while (comp(arr[i], pivot))
+//            i++;
+//        while (!comp(arr[j], pivot))
+//            j--;
+//        if (i <= j) {
+//            swap(arr[i], arr[j]);
+//            i++;
+//            j--;
+//        }
+//    };
+//
+//    /* recursion */
+//    if (left < j)
+//        quickSort(arr, left, j, comp);
+//    if (i < right)
+//        quickSort(arr, i, right, comp);
+//
+//}

@@ -1,0 +1,64 @@
+#include <iostream>
+
+#define part partitionByMiddle(arr, startOfPartition, endOfPartition - 1, compInt)
+
+using namespace std;
+typedef int Item;
+
+size_t getBinLeftIndex(const Item * array, size_t i, size_t lengthOfArray);
+size_t binSearch (const Item * a, size_t l, size_t r, Item key);
+//const char *inputFilePath = "/Users/Security/Desktop/MIPT C++/MIPT C++/input.txt";
+//const char *outputFilePath = "/Users/Security/Desktop/MIPT C++/MIPT C++/output.txt";
+void show(int *arr, int n) {
+    for (int i = 0; i < n ; ++i) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n, m;
+    //int Csize = 0;
+    scanf("%d", &n);
+    scanf("%d", &m);
+    int * A = (int *) malloc( n * sizeof(int));
+    int * B = (int *) malloc( m * sizeof(int));
+    //int * C = (int *) malloc( m * sizeof(int));
+   
+    for (int i = 0 ; i < n ; ++ i) {
+        scanf("%d", &A[i]);
+    }
+    for (int i = 0 ; i < m ; ++ i) {
+        scanf("%d", &B[i]);
+    }
+
+        for (int i = 0 ; i < m ; ++i ) {
+        size_t binInd = getBinLeftIndex(A, B[i], n);
+        size_t binInd2;
+        if (binInd == 0) binInd2 = 1;
+        else binInd2 = (binInd << 1);
+            if (binInd2 > n) binInd2 = n;
+        size_t bs = binSearch(A, binInd, binInd2, B[i]);
+        if (bs != -1) printf("%d ", A[bs]);
+            //C[Csize++] = A[bs];
+    }
+    
+    return 0;
+}
+
+
+size_t getBinLeftIndex(const Item * array, size_t key, size_t lengthOfArray) {
+    int j = 1;
+    while ((array[j] <= key)  &&  (j < lengthOfArray))
+        j = (j << 1);
+    return (j >> 1);
+}
+size_t binSearch (const Item * a, size_t l, size_t r, Item key) {
+    if (l == r) return -1;
+    if (l == r - 1) return (a[l] == key) ? l : -1;
+    size_t mid = ((l >> 1) + (r >> 1));
+    if (a[mid] > key)
+        return binSearch(a, l, mid, key);
+    else
+        return binSearch(a, mid, r, key);
+}

@@ -1,0 +1,135 @@
+//
+//  main.cpp
+//  MSD, LSD
+//
+//  Created by Александр Малышев on 09.11.14.
+//  Copyright (c) 2014 SecurityQQ. All rights reserved.
+//
+
+#include <iostream>
+#include <assert.h>
+
+#define show(arr, n) for( int i = 0; i < n; ++i ) {\
+std::cout <<arr[i] <<" ";\
+}\
+std::cout<<std::endl;
+
+#define getArr(arr, n) for( int i = 0; i < n; ++i) {\
+scanf("%lld", &arr[i]);\
+}
+
+typedef long long ll;
+
+template <class T>
+void MSD(T* arr, char d);
+
+template <class T>
+void LSD(T* arr, int d, int sizeOfArray);
+
+template<class T>
+void mergeSort (T* arr, int l, int r, bool comp(T a, T b, T d), int d);
+
+template <class T>
+void merge(T *arr, int left, int half, int right, bool comp(T a, T b, T d), int d);
+
+int byte(ll a, ll d) {
+    
+    return ( (a>> (8 * d) ) % 256);
+}
+
+bool compLSD(ll a, ll b, ll d) {
+//    for( int i = 1; i < d; ++i ) {
+//        a /= 10;
+//        b /= 10;
+//    }
+//    a %= 10;
+//    b %= 10;
+//    return a <= b;
+   return byte(a, d) <= byte(b, d);
+}
+
+
+bool compInt(int a, int b, int d) {
+    return a < b;
+}
+
+bool isSorted(int* arr, int n) {
+    for( int i = 0; i < n - 1; ++i ) {
+        if( arr[i] > arr[i + 1] ) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+int main(int argc, const char * argv[]) {
+    int n;
+
+    scanf("%d", &n);
+    ll* arr = (ll*) malloc(n * sizeof(ll));
+    getArr(arr, n);
+    LSD(arr, 7, n);
+    show(arr, n);
+    return 0;
+}
+
+template<class T>
+void mergeSort (T* arr, int l, int r, bool comp(T a, T b, T d), int d) {
+    if (r - l <= 1) {
+        return;
+    }
+    int half = (l + ((r - l) >> 1));
+    mergeSort (arr, l, half, comp, d);
+    mergeSort (arr, half, r, comp, d);
+    merge(arr, l, half, r, comp, d);
+}
+
+template <class T>
+void merge(T *arr, int left, int half, int right, bool comp(T a, T b, T d), int d) {
+    assert(left < right);
+    assert(left >= 0);
+    assert(half < right);
+    assert(left < half);
+    int l_size = half - left;
+    int r_size = right - half;
+    int l = 0;
+    int r = 0;
+    int sz = left;
+    T* l_half = (T*) malloc (l_size * sizeof(T));
+    T* r_half = (T*) malloc (r_size * sizeof(T));
+    
+    for( int i = left; i < half; ++i, ++l) {
+        l_half[l] = arr[i];
+    }
+    for (int i = half; i < right; ++i, ++r) {
+        r_half[r] = arr[i];
+    }
+    assert(l == l_size);
+    assert(r == r_size);
+    l = 0;
+    r = 0;
+    while (l < l_size && r < r_size) {
+        if (comp( l_half[l], r_half[r], d)) {
+            arr[sz++] = l_half[l++];
+        } else {
+            arr[sz++] = r_half[r++];
+        }
+    }
+    for( ; l < l_size; ++l, ++sz) {
+        arr[sz] = l_half[l];
+    }
+    for( ; r < r_size; ++r, ++sz) {
+        arr[sz] = r_half[r];
+    }
+}
+
+template <class T>
+void LSD(T* arr, int d, int sizeOfArray) {
+    for( int i = 0; i <= d; ++i) {
+        std::cout<< i << std::endl;
+        show(arr, sizeOfArray);
+        mergeSort(arr, 0, sizeOfArray, compLSD, i);
+    }
+}
+

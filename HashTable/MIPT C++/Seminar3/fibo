@@ -1,0 +1,22 @@
+#include <iostream>
+
+unsigned int fibo(unsigned int n);
+int main(){
+    for (int i = 1; i<100; i++){
+        std::cout<<fibo(i)<<std::endl;
+    }
+    return 0;
+}
+
+unsigned int fibo(unsigned int n){
+//T(n) = O(n); M(n) = O(1);
+    unsigned int f[2];
+    f[0] = 1;
+    f[1] = 1;
+    for (unsigned int i = 2; i < n; ++i){
+        unsigned int temp =f[0]+f[1];
+        f[0] = f[1];
+        f[1] = temp;
+    }
+    return f[1];
+}

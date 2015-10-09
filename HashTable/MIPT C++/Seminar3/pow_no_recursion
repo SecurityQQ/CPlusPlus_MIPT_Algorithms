@@ -1,0 +1,25 @@
+#include <iostream>
+
+
+unsigned int pow(unsigned int base, unsigned int power);
+int main(){
+    std::cout<<pow(3, 3);
+    return 0;
+}
+
+unsigned int pow(unsigned int base, unsigned int power)
+{
+    unsigned int sum=1;
+    if (power == 0) return 1;
+    while (power){
+        if (power % 2 == 0){
+            power /= 2;
+            base *= base;
+        }
+        else{
+            --power;
+            sum *= base;
+        }
+    }
+    return sum;
+}

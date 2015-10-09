@@ -1,0 +1,112 @@
+#include <iostream>
+//#include <conio.h>
+#include <assert.h>
+
+class Array
+{
+public:
+    Array();
+    ~Array();
+    int GetAt (int index);
+    void Insert (int a);
+    void DeleteAt (int indexD);
+    int length ();
+private:
+    void resize();
+    int size;
+    int realSize;
+    int* buffer;
+};
+
+
+void Array::resize()
+{
+    int* oldBuffer = buffer;
+    int newSize = 2 * size;
+    buffer = (int* ) malloc( sizeof (oldBuffer) + sizeof (int) * newSize);
+    for (int i = 0; i < size; i++)
+    {
+        buffer[i] = oldBuffer[i];
+    }
+    realSize = newSize;
+    delete[] oldBuffer;
+}
+
+
+int Array::GetAt (int index)
+{
+    assert (index < size);
+    assert (index >= 0);
+    return buffer[index];
+}
+
+
+void Array::Insert (int a)
+{
+    if (size == realSize)
+    {
+        resize();
+    }
+    buffer[size] = a;
+    size++;
+}
+
+void Array::DeleteAt (int indexD)
+{
+    assert (indexD < size);
+    assert (indexD >= 0);
+    for (int i = indexD; i < (size - 1); i++)
+    {
+        buffer[i] = buffer[i+1];
+    }
+    buffer[size - 1] = (int) malloc (sizeof (int));
+    size--;
+}
+Array::Array()
+{
+    size = 0;
+    realSize = 1;
+    buffer = (int* ) malloc (sizeof (int));
+}
+
+
+Array::~Array()
+{
+    delete[] buffer;
+    realSize = 0;
+    size = 0;
+}
+
+
+int Array::length ()
+{
+    return size;
+}
+
+
+int main()
+{
+    Array ar;
+    int n = 0, k = 0, l = 0;
+    std::cin >> n;
+    assert (n > 0);
+    for (int i = 0; i < n; i++)
+    {
+        ar.Insert(i * i);
+    }
+    for (int i = 0; i < ar.length(); i++)
+    {
+        std::cout << ar.GetAt(i) << " ";
+    }
+    std::cout << "\n";
+    std::cin >> k;
+    int x = ar.GetAt(k);
+    std::cout << x << "\n";
+    std::cin >> l;
+    ar.DeleteAt(l);
+    for (int i = 0; i < ar.length(); i++)
+    {
+        std::cout << ar.GetAt(i) << " ";
+    }
+    return 0;
+}

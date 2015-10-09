@@ -1,0 +1,120 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+//#include <windows.h>
+/* »—œ–¿¬»“‹ ‘”Õ ÷÷»ﬁ COMPARE_TG, »— Àﬁ◊»“‹ ƒ≈À≈Õ»≈ Õ¿ ÕŒÀ‹*/
+struct CRD
+{
+int x;
+int y;
+};
+bool compare_tg(CRD* crdA, CRD* crdB, CRD* crdNULL)//Ò‡‚ÌÂÌËÂ Û„Î‡
+{
+if (crdA == crdB) return 0;
+int dx1 = crdA->x - crdNULL->x;
+int dx2 = crdB->x - crdNULL->x;
+int dy1 = crdA->y - crdNULL->y;
+int dy2 = crdB->y - crdNULL->y;
+if (dx1 == 0 && dx2 != 0) return 1;
+if (dx2 == 0 && dx1 != 0) return 0;
+if (dx1 == 0 && dx2 == 0)
+{
+if (dy1 < dy2) return 1;
+return 0;
+}
+double tgA = ((double)dy1 / (1.0*dx1));
+double tgB = ((double)dy2 / (1.0*dx2));
+if (tgA > tgB) return 1;
+if (tgA == tgB)
+{
+if (dy1 < dy2) return 1;
+return 0;
+}
+return 0;
+}
+bool compare_min(CRD* crdA, CRD* crdB)//Ò‡‚ÌÂÌËÂ ÚÓ˜ÍË,ÔÓËÒÍ ÏËÌËÏÛÏ‡
+{
+if (crdA->x < crdB->x) return 1;
+if (crdA->x == crdB->x && crdA->y < crdB->y) return 1;
+return 0;
+}
+int findleft(CRD* crd, int N)
+{
+int min = 0;
+for (int i = 1; i < N; i++)
+{
+if (compare_min(&crd[i], &crd[min])) min = i;
+}
+return min;
+}
+void Swap(CRD* crd,int i,int j)
+{
+CRD buf;
+buf = crd[i];
+crd[i] = crd[j];
+crd[j] = buf;
+}
+void sort(CRD* crd, int size, int min)
+{
+if (size <= 2) return;
+for (int i = 1; i < size; i++)
+{
+int max = i;
+for (int j = i; j < size; j++)
+{
+if (compare_tg(&crd[j], &crd[max], &crd[min]))
+{
+max = j;
+}
+}
+Swap(crd, i, max);
+}
+}
+void findchain(CRD* crd, int N)
+{
+int iNull = findleft(crd,N);
+Swap(crd, iNull, 0);
+sort(crd, N,0);
+}
+void last_test(CRD* crd, int N)
+{
+int i,j;
+for (i = N - 1; i > 1; i--)
+{
+int dx1 = crd[i].x - crd[0].x;
+int dx2 = crd[i-1].x - crd[0].x;
+int dy1 = crd[i].y - crd[0].y;
+int dy2 = crd[i-1].y - crd[0].y;
+double tg1 = (double)dy1 / (1.0*dx1);
+double tg2 = (double)dy2 / (1.0*dx2);
+if (tg1 != tg2) break;
+}
+int k;
+k = (N - 1) - i;
+for (i = N - 1 - k, j = N - 1; i < j; i++, j--)
+{
+Swap(crd, i, j);
+}
+}
+int main()
+{
+int N;
+CRD *crd;
+scanf("%d", &N);
+assert(crd = (CRD*)malloc(sizeof(CRD)*N));
+for (int i = 0; i < N; i++)
+{
+scanf("%d%d", &(crd[i].x), &(crd[i].y));
+}
+findchain(crd, N);
+last_test(crd, N);
+for (int i = 0; i < N; i++)
+{
+printf("\n%d %d", crd[i].x, crd[i].y);
+}
+//while (1);
+//system("pause");
+return 0;
+
+}

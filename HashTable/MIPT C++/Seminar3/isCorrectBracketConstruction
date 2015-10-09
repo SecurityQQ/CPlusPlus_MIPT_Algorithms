@@ -1,0 +1,22 @@
+#include <iostream>
+
+bool isCorrectBracketConstruction(const char * construction);
+int main(){
+    std::cout<<isCorrectBracketConstruction("())(()");
+
+    return 0;
+}
+
+bool isCorrectBracketConstruction(const char * construction)
+{
+    int counter = 0;
+    unsigned int _len = strlen(construction);
+    
+    for (int i = 0; i < _len; ++i){
+        if (*construction++ == '(') ++counter;
+        else --counter;
+        if (counter < 0) return false;
+    }
+    if (counter > 0) return false;
+    return true;
+}

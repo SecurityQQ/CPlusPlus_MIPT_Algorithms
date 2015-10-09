@@ -1,0 +1,58 @@
+1) для змейки : p1.x < p2.x ? true : p1.y < p2.y;
+нормально : сортируем по углу
+
+2) |_| |B| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_|
+A[2^i] < B[0] < A[2^(i+1)]
+binfind (int * array, size, 2^i, 2^(i+1));
+
+qsort:
+
+int partition(int * arr, int size) {
+[  <A[ix]    |X|  >=A[ix]    ]
+
+}
+
+Опорный элемент:
+1) rand()
+swap(a[i], a[rand()]);
+2) медиана трех: берем средний из (a[l] + a[r] +a[(l+r) / 2])
+
+
+partition:
+|_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |_| |p|
+
+{      <p      }{                     >= p                  }
+
+p - опорный
+i - начало группы элементов >= p
+j - начало нерассмотренных элементов
+
+
+3)
+find k () {
+    p = partition()
+    if (p > k) find(L, p);
+
+
+int findKStat(int * arr, int L, int r, int k) {
+int p = partition (arr, L, r);
+if (p == k)
+return arr[p];
+if (p < k) return findKStat(arr, p, r, k);
+}
+return findKStat(arr, L, p-1, k);
+
+
+test on first task:
+10
+2 7
+10 6
+1 5
+8 7
+3 6
+4 6
+0 1
+1 -1
+2 2
+0 0
+
