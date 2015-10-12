@@ -18,6 +18,8 @@ typedef long long VertexWeight;
 #include <set>
 #define USED_VERTEX (INT_MAX - 1)
 
+
+
 typedef unsigned int DefaultEdgeInfo;
 
 template <class EdgeInfo = DefaultEdgeInfo>
@@ -37,10 +39,15 @@ private:
     std::shared_ptr<EdgeInfo> _info;
 };
 
-
 #include <vector>
 #include <queue>
 #include <assert.h>
+
+template <class EdgeInfo>
+std::shared_ptr<Edge<EdgeInfo>> likeNullptrButThisCompilerSucks() {
+    static auto instance = std::shared_ptr<Edge<EdgeInfo>>(new Edge<EdgeInfo>(0, 0, std::shared_ptr<EdgeInfo>(new EdgeInfo(0, 0))));
+    return instance;
+}
 
 template <class EdgeInfo>
 class ArcGraph {
@@ -52,14 +59,14 @@ public:
     ArcGraph(const VertexType numberOfVertexes);
     virtual ~ArcGraph() {}
     
-    virtual void addEdge(const VertexType from, const VertexType to, const std::shared_ptr<EdgeInfo> info = nullptr);
+    virtual void addEdge(const VertexType from, const VertexType to, const std::shared_ptr<EdgeInfo> info);
     virtual void addEdge(const std::shared_ptr<Edge<EdgeInfo>> edge);
     virtual void removeEdge(const VertexType from, const VertexType to);
     virtual void removeEdge(const std::shared_ptr<Edge<EdgeInfo>> edge);
-    virtual void changeEdge(const VertexType from, const VertexType to, std::shared_ptr<EdgeInfo> info = nullptr);
+    virtual void changeEdge(const VertexType from, const VertexType to, std::shared_ptr<EdgeInfo> info);
     virtual std::shared_ptr<Edge<EdgeInfo>> getEdge(const VertexType from, const VertexType to) const;
     virtual const bool edgeExists(const VertexType from, const VertexType to) {
-        return getEdge(from, to) != nullptr;
+        return getEdge(from, to) != likeNullptrButThisCompilerSucks<EdgeInfo>();
     }
     
     virtual const VertexType vertexCount() const;
@@ -72,7 +79,6 @@ public:
     
     
 protected:
-    
     ArcGraph() {}
     std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>> incomingEdgesToVertex;
     std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>> outcomingEdgesFromVertex;
@@ -81,7 +87,6 @@ protected:
 
 template <class EdgeInfo>
 ArcGraph<EdgeInfo>:: ArcGraph(const VertexType numberOfVertexes) {
-    
     incomingEdgesToVertex = std::move(std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>>(numberOfVertexes, std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>()));
     outcomingEdgesFromVertex = std::move(std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>>(numberOfVertexes, std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>()));
     _vertexCount = numberOfVertexes;
@@ -135,7 +140,7 @@ std::shared_ptr<Edge<EdgeInfo>> ArcGraph<EdgeInfo>:: getEdge(const VertexType fr
         }
     }
 //    return nullptr;
-    return std::shared_ptr<Edge<EdgeInfo>>(new Edge<EdgeInfo>(0, 0, std::shared_ptr<EdgeInfo>(new EdgeInfo(0, 0))));
+    return likeNullptrButThisCompilerSucks<EdgeInfo>();
 }
 
 template <class EdgeInfo>
@@ -267,7 +272,7 @@ public:
         auto oldFlow = edge->info()->flow();
         auto to = edge->to();
         auto from = edge->from();
-//        assert(getEdge(from, to) != nullptr);
+        assert(getEdge(from, to) != likeNullptrButThisCompilerSucks<NetworkEdgeInfo>());
         edge->info()->setFlow(oldFlow + flow);
         auto reversedEdge = getEdge(to, from);
         if (!reversedEdge) {
@@ -388,7 +393,8 @@ void LayeredNetwork:: getBlockingFlow() {
             if (!used[currentVertex]) {
                 used[currentVertex] = 1;
                 auto nextEdges = getNextEdges(currentVertex);
-                for (auto edge: nextEdges) {
+                for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
+                    auto edge = *it;
                     auto residualCapacity = edge->info()->residualCapacity();
                     auto to = edge->to();
                     FlowType pushingFlow;
@@ -425,7 +431,8 @@ void LayeredNetwork:: getBlockingFlow() {
             if (!used[currentVertex]) {
                 used[currentVertex] = 1;
                 auto nextEdges = getPrevEdges(currentVertex);
-                for (auto edge: nextEdges) {
+                for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
+                    auto edge = *it;
                     auto residualCapacity = edge->info()->residualCapacity();
                     auto oldFlow = edge->info()->flow();
                     auto from = edge->from();
@@ -543,8 +550,6 @@ int main(int argc, const char * argv[]) {
         residual->addEdge(edge);
         infoToOutput.push_back(info);
     }
-    
-    residual->print(0);
     
     std::cout<<GraphManager::sharedInstance().maxFlowWithMPMAlgorithm(residual); std::cout<<std::endl;
     for (auto it = infoToOutput.begin(); it != infoToOutput.end(); ++it) {
