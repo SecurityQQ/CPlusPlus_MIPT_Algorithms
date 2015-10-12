@@ -6,21 +6,19 @@
 //  Copyright © 2015 Alexander Malyshev. All rights reserved.
 //
 
-#ifndef NetworkEdgeInfoWithID_h
-#define NetworkEdgeInfoWithID_h
+#ifndef NetworkEdgeInfo_h
+#define NetworkEdgeInfo_h
 
 typedef long FlowType;
 typedef unsigned long CapacityType;
-typedef unsigned long IDType;
 
-class NetworkEdgeInfoWithID {
+class NetworkEdgeInfo {
     
 public:
-    NetworkEdgeInfoWithID(CapacityType capacity, IDType id): _flow(0), _capacity(capacity), _id(id) {};
-    NetworkEdgeInfoWithID(FlowType flow, CapacityType capacity, IDType id): _flow(flow), _capacity(capacity), _id(id) {};
+    NetworkEdgeInfo(CapacityType capacity): _flow(0), _capacity(capacity) {};
+    NetworkEdgeInfo(FlowType flow, CapacityType capacity): _flow(flow), _capacity(capacity){};
     virtual FlowType flow() { return _flow; }
     virtual CapacityType capacity() { return _capacity; }
-    virtual IDType id() { return _id; }
     virtual CapacityType residualCapacity() { return _capacity - _flow; }
     virtual void setFlow(FlowType flow) {
         assert(flow <= capacity());
@@ -33,7 +31,6 @@ public:
 protected:
     FlowType _flow;
     CapacityType _capacity;
-    IDType _id;
 };
 
 

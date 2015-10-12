@@ -10,19 +10,20 @@
 #define ResidualNetworkGraph_h
 #include "assert.h"
 #include "ArcGraph.h"
-#include "NetworkEdgeInfoWithID.h"
+#include "NetworkEdgeInfo.h"
 
 #define NOT_VISITED INT_MAX
-
 
 class ResidualNetworkGraph: public NetworkGraph {
     
 public:
-    ResidualNetworkGraph(const VertexType numberOfVertexes): NetworkGraph(numberOfVertexes) {};
-    CapacityType getCapacity(std::shared_ptr<Edge<NetworkEdgeInfoWithID>> edge) {
+    ResidualNetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink): NetworkGraph(numberOfVertexes, source, sink) {};
+    
+    CapacityType getCapacity(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
         return edge->info()->capacity() - edge->info()->flow();
     }
-    void addFlow(std::shared_ptr<Edge<NetworkEdgeInfoWithID>> edge, const FlowType flow) {
+    
+    void addFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge, const FlowType flow) {
         auto oldFlow = edge->info()->flow();
         auto to = edge->to();
         auto from = edge->from();
@@ -30,15 +31,19 @@ public:
         edge->info()->setFlow(oldFlow + flow);
         auto reversedEdge = getEdge(to, from);
         if (reversedEdge == nullptr) {
-            auto info = std::shared_ptr<NetworkEdgeInfoWithID>(new NetworkEdgeInfoWithID(0, edge->info()->flow(), edge->info()->id()));
+            auto info = std::shared_ptr<NetworkEdgeInfo>(new NetworkEdgeInfo(0, edge->info()->flow()));
             addEdge(to, from, info);
         } else {
             reversedEdge->info()->setCapacity(reversedEdge->info()->capacity() + flow);
         }
-// TODO: implement this
-        //remade capacities
     }
-
+    
+    virtual void print(const VertexType start) {
+        BFS(start, [this](std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
+            std::cout<<edge->from()<<"->"<<edge->to()<<" ("<<getCapacity(edge) <<")"<<std::endl;
+        });
+    }
+    
 private:
     
 };

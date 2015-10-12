@@ -28,12 +28,14 @@
 		959B00591BCAD963007B9705 /* NetworkGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkGraph.h; sourceTree = "<group>"; };
 		959B005A1BCAD963007B9705 /* ResidualNetworkGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResidualNetworkGraph.h; sourceTree = "<group>"; };
 		959B005B1BCAD963007B9705 /* LayeredNetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayeredNetworkManager.h; sourceTree = "<group>"; };
-		959B005C1BCAD963007B9705 /* NetworkEdgeInfoWithID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkEdgeInfoWithID.h; sourceTree = "<group>"; };
+		959B005C1BCAD963007B9705 /* NetworkEdgeInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkEdgeInfo.h; sourceTree = "<group>"; };
 		959B005E1BCAD963007B9705 /* Edge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
 		959B005F1BCAD970007B9705 /* SmartGraphs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartGraphs.h; sourceTree = "<group>"; };
 		959B00601BCAD970007B9705 /* Foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Foundation.h; sourceTree = "<group>"; };
 		959B00611BCAD970007B9705 /* GraphConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphConstants.h; sourceTree = "<group>"; };
 		959B00621BCAD970007B9705 /* ArcGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArcGraph.h; sourceTree = "<group>"; };
+		959B00671BCB8270007B9705 /* LayeredNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayeredNetwork.h; sourceTree = "<group>"; };
+		959B00681BCB8392007B9705 /* GraphManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,14 +69,16 @@
 			isa = PBXGroup;
 			children = (
 				959B004E1BCAD8D0007B9705 /* main.cpp */,
+				959B005F1BCAD970007B9705 /* SmartGraphs.h */,
 				959B00621BCAD970007B9705 /* ArcGraph.h */,
 				959B00591BCAD963007B9705 /* NetworkGraph.h */,
-				959B005F1BCAD970007B9705 /* SmartGraphs.h */,
-				959B00601BCAD970007B9705 /* Foundation.h */,
-				959B00611BCAD970007B9705 /* GraphConstants.h */,
 				959B005A1BCAD963007B9705 /* ResidualNetworkGraph.h */,
+				959B00671BCB8270007B9705 /* LayeredNetwork.h */,
+				959B00601BCAD970007B9705 /* Foundation.h */,
+				959B00681BCB8392007B9705 /* GraphManager.h */,
+				959B00611BCAD970007B9705 /* GraphConstants.h */,
 				959B005B1BCAD963007B9705 /* LayeredNetworkManager.h */,
-				959B005C1BCAD963007B9705 /* NetworkEdgeInfoWithID.h */,
+				959B005C1BCAD963007B9705 /* NetworkEdgeInfo.h */,
 				959B005E1BCAD963007B9705 /* Edge.h */,
 			);
 			path = NetworkGraphs;
