@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "03BA5EFC7920D99434600E757C1AA52C64B61E76",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "ED682CCCA40DD933D4F758D55293BDDB202C9F63" : 0,
+    "03BA5EFC7920D99434600E757C1AA52C64B61E76" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B87302C3-C893-491B-B667-D60C96A08B03",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "ED682CCCA40DD933D4F758D55293BDDB202C9F63" : "CPlusPlus_MIPT_Algorithms\/SmartGraphs\/",
+    "03BA5EFC7920D99434600E757C1AA52C64B61E76" : "CPlusPlus_MIPT_Algorithms\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NetworkGraphs",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "NetworkGraphs\/NetworkGraphs.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SecurityQQ\/CPlusPlus_MIPT_Algorithms.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03BA5EFC7920D99434600E757C1AA52C64B61E76"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SecurityQQ\/SmartGraphs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "ED682CCCA40DD933D4F758D55293BDDB202C9F63"
+    }
+  ]
+}
