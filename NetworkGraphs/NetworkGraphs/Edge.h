@@ -10,6 +10,8 @@
 #define Edge_h
 
 #include "GraphConstants.h"
+#include "NetworkEdgeInfo.h"
+
 typedef unsigned int DefaultEdgeInfo;
 
 

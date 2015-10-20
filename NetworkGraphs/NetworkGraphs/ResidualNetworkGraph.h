@@ -23,7 +23,16 @@ public:
         return edge->info()->capacity() - edge->info()->flow();
     }
     
-    void addFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge, const FlowType flow) {
+    std::shared_ptr<Edge<NetworkEdgeInfo>> getReversedEdge(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) const {
+        for (auto it = incomingEdgesToVertex[edge->to()].begin(); it != incomingEdgesToVertex[edge->to()].end(); ++it) {
+            if ((*it)->capacity() == from) {
+                return *it;
+            }
+        }
+        return nullptr;
+    }
+    
+    void pushFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge, const FlowType flow) {
         auto oldFlow = edge->info()->flow();
         auto to = edge->to();
         auto from = edge->from();

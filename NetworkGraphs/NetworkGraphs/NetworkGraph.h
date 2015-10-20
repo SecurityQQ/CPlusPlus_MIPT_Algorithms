@@ -20,18 +20,27 @@ class NetworkGraph: public ArcGraph<NetworkEdgeInfo> {
     
 public:
     NetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink): ArcGraph<NetworkEdgeInfo>(numberOfVertexes), source(source), sink(sink) {};
+    
     virtual const void performCompletionBlockOnNextEdges(const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock) {
         return performCompletionBlockOnEdgesWithDirection(1, vertex, completionBlock);
     }
     virtual const void performCompletionBlockOnPrevEdges(const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock) {
         return performCompletionBlockOnEdgesWithDirection(0, vertex, completionBlock);
     }
+    
     virtual CapacityType getCapacity(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
         return edge->info()->capacity();
     }
+    
     virtual FlowType getFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
         return edge->info()->flow();
     }
+    
+    virtual void pushFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge, const FlowType flow) {
+        auto pushingFlow = edge->info()->flow() + flow;
+        edge->info()->setFlow(pushingFlow);
+    }
+    
     virtual void print(const VertexType start) {
         BFS(start, [this](std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
         std::cout<<edge->from()<<"->"<<edge->to()<<" ("<<getFlow(edge)<<"/"<<getCapacity(edge) <<")"<<std::endl;
@@ -39,7 +48,9 @@ public:
     }
     const VertexType source;
     const VertexType sink;
+    
 private:
+    
     virtual const void performCompletionBlockOnEdgesWithDirection(const bool isFrontDirection, const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock);
 };
 
