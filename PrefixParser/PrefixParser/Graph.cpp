@@ -12,7 +12,7 @@
 
 Graph:: Graph(const std::string regularExpression) {
     vertexesSize = 0;
-    std::stack<SubNode> parseStack;
+    std::stack<SubNode> parsingStack;
     for (unsigned int i = 0; i < regularExpression.size(); ++i) {
         char currentSymbol = regularExpression.at(i);
         switch (currentSymbol) {
@@ -24,35 +24,45 @@ Graph:: Graph(const std::string regularExpression) {
                 auto symbol = createNewNode(currentSymbol);
                 begin->next.push_back(symbol);
                 symbol->next.push_back(end);
-                parseStack.push(SubNode(begin, end));
+                parsingStack.push(SubNode(begin, end));
             }
             break;
-            case '1':
-                parseStack.push(SubNode(createNewNode(Node::Eps()), createNewNode(Node::Eps())));
+            case '1': {
+                auto begin = createNewNode(Node::Eps());
+                auto end = createNewNode(Node::Eps());
+                begin->next.push_back(end);
+                parsingStack.push(SubNode(begin, end));
+            }
                 break;
             case '+': {
-                if(parseStack.size() < 2) {
+                if (parsingStack.size() < 2) {
                     throw RegularExpressionParseError::defaultError();
                 }
-                auto secondSubExp = parseStack.top(); parseStack.pop();
-                auto firstSubExp = parseStack.top(); parseStack.pop();
+                auto secondSubExp = parsingStack.top(); parsingStack.pop();
+                auto firstSubExp = parsingStack.top(); parsingStack.pop();
                 firstSubExp.begin->next.push_back(secondSubExp.begin);
                 secondSubExp.end->next.push_back(firstSubExp.end);
-                parseStack.push(SubNode(firstSubExp.begin, firstSubExp.end));
+                parsingStack.push(SubNode(firstSubExp.begin, firstSubExp.end));
             }
                 break;
             case '*': {
-                auto subExp = parseStack.top(); parseStack.pop();
+                if (parsingStack.size() < 1) {
+                    throw RegularExpressionParseError::defaultError();
+                }
+                auto subExp = parsingStack.top(); parsingStack.pop();
                 subExp.begin->next.push_back(subExp.end);
                 subExp.end->next.push_back(subExp.begin);
-                parseStack.push(subExp);
+                parsingStack.push(subExp);
             }
                 break;
             case '.': {
-                auto secondSubExp = parseStack.top(); parseStack.pop();
-                auto firstSubExp = parseStack.top(); parseStack.pop();
+                if (parsingStack.size() < 2) {
+                    throw RegularExpressionParseError::defaultError();
+                }
+                auto secondSubExp = parsingStack.top(); parsingStack.pop();
+                auto firstSubExp = parsingStack.top(); parsingStack.pop();
                 firstSubExp.end->next.push_back(secondSubExp.begin);
-                parseStack.push(SubNode(firstSubExp.begin, secondSubExp.end));
+                parsingStack.push(SubNode(firstSubExp.begin, secondSubExp.end));
             }
                 break;
             default:
@@ -60,13 +70,39 @@ Graph:: Graph(const std::string regularExpression) {
                 break;
         }
     }
-    auto regExp = parseStack.top(); parseStack.pop();
+    auto regExp = parsingStack.top(); parsingStack.pop();
     this->begin = regExp.begin;
     this->end = regExp.end;
 }
 
 unsigned int Graph:: findMaxPrefixInWord(std::string word) {
-    return 0;
+    unsigned int ans = 0;
+    std::vector<std::vector<char>> reachedVertex(vertexesSize, std::vector<char>(word.size() + 1, 0));
+    std::stack<AnsNode> stack;
+    stack.push(AnsNode(this->begin, 0));
+    
+    while (!stack.empty()) {
+        auto curAns = stack.top(); stack.pop();
+        if (curAns.node == this->end) {
+            ans = ans > curAns.ans ? ans : curAns.ans;
+        }
+        
+        for (auto it = curAns.node->next.begin(); it != curAns.node->next.end(); ++it) {
+            if (curAns.ans == word.size()) {
+                continue;
+            }
+            if(!reachedVertex[(*it)->id][curAns.ans] && (*it)->symbol == Node::Eps()) {
+                reachedVertex[(*it)->id][curAns.ans] = 1;
+                stack.push(AnsNode(*it, curAns.ans));
+            }
+            if (((*it)->symbol == word[curAns.ans]) && !reachedVertex[(*it)->id][curAns.ans + 1]) {
+                reachedVertex[(*it)->id][curAns.ans + 1] = 1;
+                stack.push(AnsNode(*it, curAns.ans + 1));
+            }
+        }
+    }
+    
+    return ans;
 }
 
 Node * Graph:: createNewNode(const char symbol) {

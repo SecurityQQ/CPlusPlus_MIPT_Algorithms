@@ -55,7 +55,7 @@ class RegularExpressionParseError: public std::string {
     
 public:
     static RegularExpressionParseError defaultError() {
-        static auto instance = RegularExpressionParseError("(Can't parse regular expression. Regular Expression should be in Reverse Polish notation (https://en.wikipedia.org/wiki/Reverse_Polish_notation))");
+        static auto instance = RegularExpressionParseError("Can't parse regular expression. Regular Expression should be in Reverse Polish notation (https://en.wikipedia.org/wiki/Reverse_Polish_notation");
         return instance;
     }
     
