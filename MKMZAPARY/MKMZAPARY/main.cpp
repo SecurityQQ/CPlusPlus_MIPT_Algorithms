@@ -7,15 +7,14 @@
 //
 
 #include <iostream>
-#include "ResidualNetworkGraph.h"
 #include "LayeredNetworkGraph.h"
-#include <array>
-#include "NetworkGraph.h"
-
+//#include "LayeredNetworkGraph.h"
+//#include <array>
+//#include "Graph.h"
 int main(int argc, const char * argv[]) {
     int n, m;
     std::cin>>n >>m;
-    auto residual = std::shared_ptr<ResidualNetworkGraph>(new ResidualNetworkGraph(n));
+    auto residual = std::make_shared<ResidualNetworkGraph>(n, 0, n - 1);
     for (int i = 0; i < m; ++i) {
         int from, to, capacity;
         std::cin>>from >> to >> capacity;
@@ -24,7 +23,12 @@ int main(int argc, const char * argv[]) {
 //            residual->pushFlow(1, edge);
 //        }
     }
-    
+//    residual->pushFlow(1, 0, 2);
+//    residual->pushFlow(1, 1, 3);
+    std::cout<<"Residual:"<<std::endl;
     residual->print(0);
+//    std::cout<<"Layered:"<<std::endl;
+//    auto layered = std::make_shared<LayeredNetworkGraph>(residual);
+//    layered->print(0);
     return 0;
 }

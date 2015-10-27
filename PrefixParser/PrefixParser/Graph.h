@@ -38,6 +38,7 @@ public:
     AnsNode(Node *node, const unsigned int ans): node(node), ans(ans) {}
 };
 
+//* Creates Non-Determened Finite Automata for parsing regular expression *//
 class Graph {
 public:
     Graph(const std::string regularExpression); ///throws

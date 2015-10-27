@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9552A12E1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */; settings = {ASSET_TAGS = (); }; };
-		9567E39B1BDA051E0053511A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9567E39A1BDA051E0053511A /* main.cpp */; };
+		9552A11A1BDD76D60092C9AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1191BDD76D60092C9AF /* main.cpp */; };
+		9552A1251BDD76E50092C9AF /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1201BDD76E50092C9AF /* Graph.cpp */; settings = {ASSET_TAGS = (); }; };
+		9552A1261BDD76E50092C9AF /* MaxFlowThreeIndians.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1221BDD76E50092C9AF /* MaxFlowThreeIndians.cpp */; settings = {ASSET_TAGS = (); }; };
+		9552A1271BDD76E50092C9AF /* ResidualAndLayederdGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1231BDD76E50092C9AF /* ResidualAndLayederdGraph.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9567E3951BDA051E0053511A /* CopyFiles */ = {
+		9552A1141BDD76D60092C9AF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,18 +26,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9552A1281BDD81840092C9AF /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
-		9552A1291BDD83A40092C9AF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResidualNetworkGraph.cpp; sourceTree = "<group>"; };
-		9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResidualNetworkGraph.hpp; sourceTree = "<group>"; };
-		9567E3971BDA051E0053511A /* MKMZAPARY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MKMZAPARY; sourceTree = BUILT_PRODUCTS_DIR; };
-		9567E39A1BDA051E0053511A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		9567E3A21BDA15E50053511A /* LayeredNetworkGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayeredNetworkGraph.h; sourceTree = "<group>"; };
-		9567E3A31BDA163A0053511A /* FlowKeeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlowKeeper.h; sourceTree = "<group>"; };
+		9552A1161BDD76D60092C9AF /* MKM_Sasha_Boimel */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MKM_Sasha_Boimel; sourceTree = BUILT_PRODUCTS_DIR; };
+		9552A1191BDD76D60092C9AF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9552A1201BDD76E50092C9AF /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		9552A1211BDD76E50092C9AF /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		9552A1221BDD76E50092C9AF /* MaxFlowThreeIndians.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MaxFlowThreeIndians.cpp; sourceTree = "<group>"; };
+		9552A1231BDD76E50092C9AF /* ResidualAndLayederdGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResidualAndLayederdGraph.cpp; sourceTree = "<group>"; };
+		9552A1241BDD76E50092C9AF /* ResidualAndLayederdGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResidualAndLayederdGraph.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9567E3941BDA051E0053511A /* Frameworks */ = {
+		9552A1131BDD76D60092C9AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,101 +46,102 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9567E38E1BDA051E0053511A = {
+		9552A10D1BDD76D60092C9AF = {
 			isa = PBXGroup;
 			children = (
-				9567E3991BDA051E0053511A /* MKMZAPARY */,
-				9567E3981BDA051E0053511A /* Products */,
+				9552A1181BDD76D60092C9AF /* MKM_Sasha_Boimel */,
+				9552A1171BDD76D60092C9AF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9567E3981BDA051E0053511A /* Products */ = {
+		9552A1171BDD76D60092C9AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9567E3971BDA051E0053511A /* MKMZAPARY */,
+				9552A1161BDD76D60092C9AF /* MKM_Sasha_Boimel */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9567E3991BDA051E0053511A /* MKMZAPARY */ = {
+		9552A1181BDD76D60092C9AF /* MKM_Sasha_Boimel */ = {
 			isa = PBXGroup;
 			children = (
-				9567E39A1BDA051E0053511A /* main.cpp */,
-				9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */,
-				9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */,
-				9552A1281BDD81840092C9AF /* Graph.h */,
-				9552A1291BDD83A40092C9AF /* Constants.h */,
-				9567E3A31BDA163A0053511A /* FlowKeeper.h */,
-				9567E3A21BDA15E50053511A /* LayeredNetworkGraph.h */,
+				9552A1191BDD76D60092C9AF /* main.cpp */,
+				9552A1201BDD76E50092C9AF /* Graph.cpp */,
+				9552A1211BDD76E50092C9AF /* Graph.h */,
+				9552A1221BDD76E50092C9AF /* MaxFlowThreeIndians.cpp */,
+				9552A1231BDD76E50092C9AF /* ResidualAndLayederdGraph.cpp */,
+				9552A1241BDD76E50092C9AF /* ResidualAndLayederdGraph.h */,
 			);
-			path = MKMZAPARY;
+			path = MKM_Sasha_Boimel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9567E3961BDA051E0053511A /* MKMZAPARY */ = {
+		9552A1151BDD76D60092C9AF /* MKM_Sasha_Boimel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9567E39E1BDA051E0053511A /* Build configuration list for PBXNativeTarget "MKMZAPARY" */;
+			buildConfigurationList = 9552A11D1BDD76D60092C9AF /* Build configuration list for PBXNativeTarget "MKM_Sasha_Boimel" */;
 			buildPhases = (
-				9567E3931BDA051E0053511A /* Sources */,
-				9567E3941BDA051E0053511A /* Frameworks */,
-				9567E3951BDA051E0053511A /* CopyFiles */,
+				9552A1121BDD76D60092C9AF /* Sources */,
+				9552A1131BDD76D60092C9AF /* Frameworks */,
+				9552A1141BDD76D60092C9AF /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MKMZAPARY;
-			productName = MKMZAPARY;
-			productReference = 9567E3971BDA051E0053511A /* MKMZAPARY */;
+			name = MKM_Sasha_Boimel;
+			productName = MKM_Sasha_Boimel;
+			productReference = 9552A1161BDD76D60092C9AF /* MKM_Sasha_Boimel */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9567E38F1BDA051E0053511A /* Project object */ = {
+		9552A10E1BDD76D60092C9AF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alexander Malyshev";
 				TargetAttributes = {
-					9567E3961BDA051E0053511A = {
+					9552A1151BDD76D60092C9AF = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
 			};
-			buildConfigurationList = 9567E3921BDA051E0053511A /* Build configuration list for PBXProject "MKMZAPARY" */;
+			buildConfigurationList = 9552A1111BDD76D60092C9AF /* Build configuration list for PBXProject "MKM_Sasha_Boimel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 9567E38E1BDA051E0053511A;
-			productRefGroup = 9567E3981BDA051E0053511A /* Products */;
+			mainGroup = 9552A10D1BDD76D60092C9AF;
+			productRefGroup = 9552A1171BDD76D60092C9AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9567E3961BDA051E0053511A /* MKMZAPARY */,
+				9552A1151BDD76D60092C9AF /* MKM_Sasha_Boimel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9567E3931BDA051E0053511A /* Sources */ = {
+		9552A1121BDD76D60092C9AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9552A12E1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp in Sources */,
-				9567E39B1BDA051E0053511A /* main.cpp in Sources */,
+				9552A1251BDD76E50092C9AF /* Graph.cpp in Sources */,
+				9552A1271BDD76E50092C9AF /* ResidualAndLayederdGraph.cpp in Sources */,
+				9552A11A1BDD76D60092C9AF /* main.cpp in Sources */,
+				9552A1261BDD76E50092C9AF /* MaxFlowThreeIndians.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9567E39C1BDA051E0053511A /* Debug */ = {
+		9552A11B1BDD76D60092C9AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -181,7 +183,7 @@
 			};
 			name = Debug;
 		};
-		9567E39D1BDA051E0053511A /* Release */ = {
+		9552A11C1BDD76D60092C9AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -216,14 +218,14 @@
 			};
 			name = Release;
 		};
-		9567E39F1BDA051E0053511A /* Debug */ = {
+		9552A11E1BDD76D60092C9AF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		9567E3A01BDA051E0053511A /* Release */ = {
+		9552A11F1BDD76D60092C9AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -233,25 +235,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9567E3921BDA051E0053511A /* Build configuration list for PBXProject "MKMZAPARY" */ = {
+		9552A1111BDD76D60092C9AF /* Build configuration list for PBXProject "MKM_Sasha_Boimel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9567E39C1BDA051E0053511A /* Debug */,
-				9567E39D1BDA051E0053511A /* Release */,
+				9552A11B1BDD76D60092C9AF /* Debug */,
+				9552A11C1BDD76D60092C9AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9567E39E1BDA051E0053511A /* Build configuration list for PBXNativeTarget "MKMZAPARY" */ = {
+		9552A11D1BDD76D60092C9AF /* Build configuration list for PBXNativeTarget "MKM_Sasha_Boimel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9567E39F1BDA051E0053511A /* Debug */,
-				9567E3A01BDA051E0053511A /* Release */,
+				9552A11E1BDD76D60092C9AF /* Debug */,
+				9552A11F1BDD76D60092C9AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9567E38F1BDA051E0053511A /* Project object */;
+	rootObject = 9552A10E1BDD76D60092C9AF /* Project object */;
 }

@@ -1,65 +1,53 @@
 //
-//  NetworkGraph.h
+//  Graph.h
 //  MKMZAPARY
 //
-//  Created by Alexander Malyshev on 23.10.15.
+//  Created by Alexander Malyshev on 26.10.15.
 //  Copyright © 2015 Alexander Malyshev. All rights reserved.
 //
 
-#ifndef NetworkGraph_h
-#define NetworkGraph_h
-
-
+#ifndef Graph_h
+#define Graph_h
 #include <forward_list>
 #include <vector>
 #include <queue>
 #include <assert.h>
-#include "FlowKeeper.h"
+#include "Constants.h"
 
-class NetworkGraph {
-    
+class Graph {
 public:
-    
     typedef std::forward_list<VertexType> VertexesCollection;
     
-    NetworkGraph(const VertexType numberOfVertexes);
-    virtual ~NetworkGraph() {}
+    Graph(const VertexType numberOfVertexes);
+    virtual ~Graph() {}
     
-    virtual void addEdge(const VertexType from, const VertexType to, const FlowType flow, const CapacityType capacity);
+    virtual void addEdge(const VertexType from, const VertexType to);
     virtual void removeEdge(const VertexType from, const VertexType to);
-    virtual void pushFlow(const FlowType flow, const VertexType from, const VertexType to);
     
     virtual const VertexType vertexCount() const;
     virtual const VertexesCollection getNextVertexes(const VertexType vertex) const;
     virtual const VertexesCollection getPrevVertexes(const VertexType vertex) const;
     
     virtual void BFS(const VertexType start, const std::function<void(const VertexType from, const VertexType to)> completionBlock);
-    virtual void print(const VertexType start);
     
-protected:
-    
-    NetworkGraph() {}
+private:
     std::vector<VertexesCollection> incomingVertexes;
     std::vector<VertexesCollection> outcomingVertexes;
     VertexType _vertexCount;
-    std::shared_ptr<FlowKeeper> flowKeeper;
 };
 
-NetworkGraph:: NetworkGraph(const VertexType numberOfVertexes) {
+Graph:: Graph(const VertexType numberOfVertexes) {
     incomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
     outcomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
-    flowKeeper = std::make_shared<FlowKeeper>(numberOfVertexes);
     _vertexCount = numberOfVertexes;
 }
 
-void NetworkGraph:: addEdge(const VertexType from, const VertexType to, const FlowType flow, const CapacityType capacity) {
-    flowKeeper->addCapacity(capacity, from, to);
-    flowKeeper->pushFlow(flow, from, to);
+void Graph:: addEdge(const VertexType from, const VertexType to) {
     incomingVertexes[to].push_front(from);
     outcomingVertexes[from].push_front(to);
 }
 
-void NetworkGraph:: removeEdge(const VertexType from, const VertexType to) {
+void Graph:: removeEdge(const VertexType from, const VertexType to) {
     assert((from < incomingVertexes.size()) && (to < outcomingVertexes.size()));
     incomingVertexes[to].remove_if([&from](const VertexType vertex) {
         return from == vertex;
@@ -69,23 +57,19 @@ void NetworkGraph:: removeEdge(const VertexType from, const VertexType to) {
     });
 }
 
-void NetworkGraph:: pushFlow(FlowType flow, const VertexType from, const VertexType to) {
-    flowKeeper->pushFlow(flow, from, to);
-}
-
-const VertexType NetworkGraph:: vertexCount() const {
+const VertexType Graph:: vertexCount() const {
     return _vertexCount;
 }
 
-const typename NetworkGraph::VertexesCollection NetworkGraph:: getNextVertexes(const VertexType vertex) const {
+const typename Graph::VertexesCollection Graph:: getNextVertexes(const VertexType vertex) const {
     return outcomingVertexes[vertex];
 }
 
-const typename NetworkGraph::VertexesCollection NetworkGraph:: getPrevVertexes(const VertexType vertex) const {
+const typename Graph::VertexesCollection Graph:: getPrevVertexes(const VertexType vertex) const {
     return incomingVertexes[vertex];
 }
 
-void NetworkGraph:: BFS(const VertexType start, const std::function<void(const VertexType from, const VertexType to)> completionBlock) {
+void Graph:: BFS(const VertexType start, const std::function<void(const VertexType from, const VertexType to)> completionBlock) {
     std::queue<VertexType> vertexQueue;
     std::vector<VertexType> used(vertexCount());
     vertexQueue.push(start);
@@ -104,10 +88,4 @@ void NetworkGraph:: BFS(const VertexType start, const std::function<void(const V
     }
 }
 
-void NetworkGraph:: print(const VertexType start) {
-    BFS(start, [this](const VertexType from, const VertexType to) {
-        std::cout<<from<<"->"<<to<<" ("<<flowKeeper->flow(from, to)<<"/"<<flowKeeper->capacity(from, to) <<")"<<std::endl;
-    });
-}
-
-#endif /* NetworkGraph_h */
+#endif /* Graph_h */

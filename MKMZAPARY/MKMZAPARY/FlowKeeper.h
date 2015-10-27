@@ -8,19 +8,15 @@
 
 #ifndef FlowKeeper_h
 #define FlowKeeper_h
-
-typedef long FlowType;
-typedef long CapacityType;
-typedef unsigned long long VertexType;
-typedef long long VertexWeight;
-
+#include "Constants.h"
 class FlowKeeper {
     
 public:
     
     FlowKeeper(const VertexType numberOfVertexes);
-    const FlowType flow(const VertexType from, const VertexType to);
-    const CapacityType capacity(const VertexType from, const VertexType to);
+    const FlowType flow(const VertexType from, const VertexType to) const;
+    const CapacityType capacity(const VertexType from, const VertexType to) const;
+    const CapacityType residualCapacity(const VertexType from, const VertexType to) const;
     void pushFlow(const FlowType flow, const VertexType from, const VertexType to);
     void addCapacity(const CapacityType capacity, const VertexType from, const VertexType to);
 private:
@@ -33,10 +29,10 @@ FlowKeeper:: FlowKeeper(const VertexType numberOfVertexes) {
     _capacity = std::move(std::vector<std::vector<CapacityType>>(numberOfVertexes, std::vector<CapacityType>(numberOfVertexes)));
 }
 
-
 void FlowKeeper:: pushFlow(const FlowType flow, const VertexType from, const VertexType to) {
     assert(_flow[from][to] + flow <= _capacity[from][to]);
     _flow[from][to] += flow;
+    _flow[to][from] -= flow;
 }
 
 void FlowKeeper:: addCapacity(const CapacityType capacity, const VertexType from, const VertexType to) {
@@ -44,12 +40,16 @@ void FlowKeeper:: addCapacity(const CapacityType capacity, const VertexType from
 }
 
 
-const FlowType FlowKeeper:: flow(const VertexType from, const VertexType to) {
+const FlowType FlowKeeper:: flow(const VertexType from, const VertexType to) const {
     return _flow[from][to];
 }
 
-const CapacityType FlowKeeper:: capacity(const VertexType from, const VertexType to) {
+const CapacityType FlowKeeper:: capacity(const VertexType from, const VertexType to) const {
      return _capacity[from][to];
+}
+
+const CapacityType FlowKeeper:: residualCapacity(const VertexType from, const VertexType to) const {
+    return _capacity[from][to] - _flow[from][to];
 }
 
 #endif /* FlowKeeper_h */

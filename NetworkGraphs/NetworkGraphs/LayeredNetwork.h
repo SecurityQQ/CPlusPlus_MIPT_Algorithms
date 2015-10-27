@@ -83,7 +83,6 @@ void LayeredNetwork:: getBlockingFlow() {
         std::set<VertexType> vertexesToDelete;
         std::queue<VertexType> pushingQueue;
         std::vector<char> used(vertexCapacity(), 0);
-        
         auto getIndexOfMinElement = [](const std::vector<CapacityType>& v) -> unsigned long long {
             CapacityType min = v[0];
             unsigned long long minIndex = 0;
