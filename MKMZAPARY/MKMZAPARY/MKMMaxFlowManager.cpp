@@ -7,7 +7,7 @@
 //
 
 #include "MKMMaxFlowManager.hpp"
-#include "LayeredNetworkGraph.h"
+#include "LayeredNetworkGraph.hpp"
 
 const VertexType MKMMaxFlowManager:: getMaxFlow() {
     while (true) {

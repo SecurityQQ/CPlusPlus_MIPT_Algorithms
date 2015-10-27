@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "LayeredNetworkGraph.h"
+#include "LayeredNetworkGraph.hpp"
 #include "MKMMaxFlowManager.hpp"
 //#include "LayeredNetworkGraph.h"
 //#include <array>
