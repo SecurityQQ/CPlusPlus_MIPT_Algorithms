@@ -8,7 +8,10 @@
 
 #include <iostream>
 #include "LayeredNetworkGraph.hpp"
+
 #include "MKMMaxFlowManager.hpp"
+
+
 //#include "LayeredNetworkGraph.h"
 //#include <array>
 //#include "Graph.h"
@@ -16,11 +19,11 @@
 int main(int argc, const char * argv[]) {
     int n, m;
     std::cin>>n >>m;
-    auto residual = std::make_shared<ResidualNetworkGraph>(n, 0, n - 1);
+    auto residual = new ResidualNetworkGraph(n, 0, n - 1);
     for (int i = 0; i < m; ++i) {
         int from, to, capacity;
         std::cin>>from >> to >> capacity;
-        residual->addEdge(from, to, 0, capacity);
+        residual->addEdge(from - 1, to - 1, 0, capacity);
 //        if (from == 0 && to == 1) {
 //            residual->pushFlow(1, edge);
 //        }
@@ -32,5 +35,10 @@ int main(int argc, const char * argv[]) {
 //    std::cout<<"Layered:"<<std::endl;
 //    auto layered = std::make_shared<LayeredNetworkGraph>(residual);
 //    layered->print(0);
+    
+    auto manager = MKMMaxFlowManager(residual);
+    auto maxFlow = manager.getMaxFlow();
+    std::cout<<maxFlow<<std::endl;
+    delete residual;
     return 0;
 }

@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9552A12E1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */; settings = {ASSET_TAGS = (); }; };
-		9552A1311BDFFA980092C9AF /* MKMMaxFlowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A12F1BDFFA980092C9AF /* MKMMaxFlowManager.cpp */; settings = {ASSET_TAGS = (); }; };
-		9552A1341BE001DF0092C9AF /* LayeredNetworkGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1321BE001DF0092C9AF /* LayeredNetworkGraph.cpp */; settings = {ASSET_TAGS = (); }; };
 		9567E39B1BDA051E0053511A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9567E39A1BDA051E0053511A /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -28,11 +25,8 @@
 /* Begin PBXFileReference section */
 		9552A1281BDD81840092C9AF /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		9552A1291BDD83A40092C9AF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResidualNetworkGraph.cpp; sourceTree = "<group>"; };
 		9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResidualNetworkGraph.hpp; sourceTree = "<group>"; };
-		9552A12F1BDFFA980092C9AF /* MKMMaxFlowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MKMMaxFlowManager.cpp; sourceTree = "<group>"; };
 		9552A1301BDFFA980092C9AF /* MKMMaxFlowManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MKMMaxFlowManager.hpp; sourceTree = "<group>"; };
-		9552A1321BE001DF0092C9AF /* LayeredNetworkGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayeredNetworkGraph.cpp; sourceTree = "<group>"; };
 		9552A1331BE001DF0092C9AF /* LayeredNetworkGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayeredNetworkGraph.hpp; sourceTree = "<group>"; };
 		9567E3971BDA051E0053511A /* MKMZAPARY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MKMZAPARY; sourceTree = BUILT_PRODUCTS_DIR; };
 		9567E39A1BDA051E0053511A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -70,14 +64,11 @@
 			isa = PBXGroup;
 			children = (
 				9567E39A1BDA051E0053511A /* main.cpp */,
-				9552A12C1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp */,
-				9552A12F1BDFFA980092C9AF /* MKMMaxFlowManager.cpp */,
 				9552A1301BDFFA980092C9AF /* MKMMaxFlowManager.hpp */,
 				9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */,
 				9552A1281BDD81840092C9AF /* Graph.h */,
 				9552A1291BDD83A40092C9AF /* Constants.h */,
 				9567E3A31BDA163A0053511A /* FlowKeeper.h */,
-				9552A1321BE001DF0092C9AF /* LayeredNetworkGraph.cpp */,
 				9552A1331BE001DF0092C9AF /* LayeredNetworkGraph.hpp */,
 			);
 			path = MKMZAPARY;
@@ -140,9 +131,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9567E39B1BDA051E0053511A /* main.cpp in Sources */,
-				9552A12E1BDFF00C0092C9AF /* ResidualNetworkGraph.cpp in Sources */,
-				9552A1341BE001DF0092C9AF /* LayeredNetworkGraph.cpp in Sources */,
-				9552A1311BDFFA980092C9AF /* MKMMaxFlowManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
