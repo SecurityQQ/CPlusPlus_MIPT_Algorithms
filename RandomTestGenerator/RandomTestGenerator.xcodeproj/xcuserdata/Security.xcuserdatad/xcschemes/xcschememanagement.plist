@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MaxFlow For Contest.xcscheme</key>
+		<key>RandomTestGenerator.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>9552A13D1BE0EC240092C9AF</key>
+		<key>9511D7561BE2886000C055AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

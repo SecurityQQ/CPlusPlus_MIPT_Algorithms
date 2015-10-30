@@ -217,6 +217,7 @@
 		9567E39F1BDA051E0053511A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = /Developer/QT/5.5/clang_64/bin/qmake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,6 +225,7 @@
 		9567E3A01BDA051E0053511A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = /Developer/QT/5.5/clang_64/bin/qmake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

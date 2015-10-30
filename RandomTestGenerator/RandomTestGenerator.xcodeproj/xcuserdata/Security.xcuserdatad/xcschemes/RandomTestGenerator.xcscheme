@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9552A13D1BE0EC240092C9AF"
-               BuildableName = "MaxFlow For Contest"
-               BlueprintName = "MaxFlow For Contest"
-               ReferencedContainer = "container:MaxFlow For Contest.xcodeproj">
+               BlueprintIdentifier = "9511D7561BE2886000C055AB"
+               BuildableName = "RandomTestGenerator"
+               BlueprintName = "RandomTestGenerator"
+               ReferencedContainer = "container:RandomTestGenerator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9552A13D1BE0EC240092C9AF"
-            BuildableName = "MaxFlow For Contest"
-            BlueprintName = "MaxFlow For Contest"
-            ReferencedContainer = "container:MaxFlow For Contest.xcodeproj">
+            BlueprintIdentifier = "9511D7561BE2886000C055AB"
+            BuildableName = "RandomTestGenerator"
+            BlueprintName = "RandomTestGenerator"
+            ReferencedContainer = "container:RandomTestGenerator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9552A13D1BE0EC240092C9AF"
-            BuildableName = "MaxFlow For Contest"
-            BlueprintName = "MaxFlow For Contest"
-            ReferencedContainer = "container:MaxFlow For Contest.xcodeproj">
+            BlueprintIdentifier = "9511D7561BE2886000C055AB"
+            BuildableName = "RandomTestGenerator"
+            BlueprintName = "RandomTestGenerator"
+            ReferencedContainer = "container:RandomTestGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9552A13D1BE0EC240092C9AF"
-            BuildableName = "MaxFlow For Contest"
-            BlueprintName = "MaxFlow For Contest"
-            ReferencedContainer = "container:MaxFlow For Contest.xcodeproj">
+            BlueprintIdentifier = "9511D7561BE2886000C055AB"
+            BuildableName = "RandomTestGenerator"
+            BlueprintName = "RandomTestGenerator"
+            ReferencedContainer = "container:RandomTestGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

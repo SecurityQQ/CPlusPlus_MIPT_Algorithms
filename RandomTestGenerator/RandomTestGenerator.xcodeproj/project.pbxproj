@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9552A1421BE0EC240092C9AF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9552A1411BE0EC240092C9AF /* main.cpp */; };
+		9511D75B1BE2886000C055AB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9511D75A1BE2886000C055AB /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9552A13C1BE0EC240092C9AF /* CopyFiles */ = {
+		9511D7551BE2886000C055AB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9552A13E1BE0EC240092C9AF /* MaxFlow For Contest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "MaxFlow For Contest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9552A1411BE0EC240092C9AF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9511D7571BE2886000C055AB /* RandomTestGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RandomTestGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		9511D75A1BE2886000C055AB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9552A13B1BE0EC240092C9AF /* Frameworks */ = {
+		9511D7541BE2886000C055AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9552A1351BE0EC240092C9AF = {
+		9511D74E1BE2886000C055AB = {
 			isa = PBXGroup;
 			children = (
-				9552A1401BE0EC240092C9AF /* MaxFlow For Contest */,
-				9552A13F1BE0EC240092C9AF /* Products */,
+				9511D7591BE2886000C055AB /* RandomTestGenerator */,
+				9511D7581BE2886000C055AB /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9552A13F1BE0EC240092C9AF /* Products */ = {
+		9511D7581BE2886000C055AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9552A13E1BE0EC240092C9AF /* MaxFlow For Contest */,
+				9511D7571BE2886000C055AB /* RandomTestGenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9552A1401BE0EC240092C9AF /* MaxFlow For Contest */ = {
+		9511D7591BE2886000C055AB /* RandomTestGenerator */ = {
 			isa = PBXGroup;
 			children = (
-				9552A1411BE0EC240092C9AF /* main.cpp */,
+				9511D75A1BE2886000C055AB /* main.cpp */,
 			);
-			path = "MaxFlow For Contest";
+			path = RandomTestGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9552A13D1BE0EC240092C9AF /* MaxFlow For Contest */ = {
+		9511D7561BE2886000C055AB /* RandomTestGenerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9552A1451BE0EC240092C9AF /* Build configuration list for PBXNativeTarget "MaxFlow For Contest" */;
+			buildConfigurationList = 9511D75E1BE2886000C055AB /* Build configuration list for PBXNativeTarget "RandomTestGenerator" */;
 			buildPhases = (
-				9552A13A1BE0EC240092C9AF /* Sources */,
-				9552A13B1BE0EC240092C9AF /* Frameworks */,
-				9552A13C1BE0EC240092C9AF /* CopyFiles */,
+				9511D7531BE2886000C055AB /* Sources */,
+				9511D7541BE2886000C055AB /* Frameworks */,
+				9511D7551BE2886000C055AB /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "MaxFlow For Contest";
-			productName = "MaxFlow For Contest";
-			productReference = 9552A13E1BE0EC240092C9AF /* MaxFlow For Contest */;
+			name = RandomTestGenerator;
+			productName = RandomTestGenerator;
+			productReference = 9511D7571BE2886000C055AB /* RandomTestGenerator */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9552A1361BE0EC240092C9AF /* Project object */ = {
+		9511D74F1BE2886000C055AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alexander Malyshev";
 				TargetAttributes = {
-					9552A13D1BE0EC240092C9AF = {
+					9511D7561BE2886000C055AB = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
 			};
-			buildConfigurationList = 9552A1391BE0EC240092C9AF /* Build configuration list for PBXProject "MaxFlow For Contest" */;
+			buildConfigurationList = 9511D7521BE2886000C055AB /* Build configuration list for PBXProject "RandomTestGenerator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 9552A1351BE0EC240092C9AF;
-			productRefGroup = 9552A13F1BE0EC240092C9AF /* Products */;
+			mainGroup = 9511D74E1BE2886000C055AB;
+			productRefGroup = 9511D7581BE2886000C055AB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9552A13D1BE0EC240092C9AF /* MaxFlow For Contest */,
+				9511D7561BE2886000C055AB /* RandomTestGenerator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9552A13A1BE0EC240092C9AF /* Sources */ = {
+		9511D7531BE2886000C055AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9552A1421BE0EC240092C9AF /* main.cpp in Sources */,
+				9511D75B1BE2886000C055AB /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9552A1431BE0EC240092C9AF /* Debug */ = {
+		9511D75C1BE2886000C055AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -167,7 +167,7 @@
 			};
 			name = Debug;
 		};
-		9552A1441BE0EC240092C9AF /* Release */ = {
+		9511D75D1BE2886000C055AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,14 +202,14 @@
 			};
 			name = Release;
 		};
-		9552A1461BE0EC240092C9AF /* Debug */ = {
+		9511D75F1BE2886000C055AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		9552A1471BE0EC240092C9AF /* Release */ = {
+		9511D7601BE2886000C055AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -219,24 +219,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9552A1391BE0EC240092C9AF /* Build configuration list for PBXProject "MaxFlow For Contest" */ = {
+		9511D7521BE2886000C055AB /* Build configuration list for PBXProject "RandomTestGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9552A1431BE0EC240092C9AF /* Debug */,
-				9552A1441BE0EC240092C9AF /* Release */,
+				9511D75C1BE2886000C055AB /* Debug */,
+				9511D75D1BE2886000C055AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9552A1451BE0EC240092C9AF /* Build configuration list for PBXNativeTarget "MaxFlow For Contest" */ = {
+		9511D75E1BE2886000C055AB /* Build configuration list for PBXNativeTarget "RandomTestGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9552A1461BE0EC240092C9AF /* Debug */,
-				9552A1471BE0EC240092C9AF /* Release */,
+				9511D75F1BE2886000C055AB /* Debug */,
+				9511D7601BE2886000C055AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9552A1361BE0EC240092C9AF /* Project object */;
+	rootObject = 9511D74F1BE2886000C055AB /* Project object */;
 }

@@ -2,175 +2,82 @@
 //  main.cpp
 //  MaxFlow For Contest
 //
-//  Created by Alexander Malyshev on 09.10.15.
+//  Created by Alexander Malyshev on 28.10.15.
 //  Copyright © 2015 Alexander Malyshev. All rights reserved.
 //
 
 #include <iostream>
-#define nullptr NULL
-#define INT_MAX 1000000001
-#include <cstddef>
-
 typedef unsigned long long VertexType;
-typedef long long VertexWeight;
-
-#include <forward_list>
+typedef long FlowType;
+typedef long CapacityType;
+#include <limits.h>
 #include <set>
-#define USED_VERTEX (INT_MAX - 1)
-
-
-
-typedef unsigned int DefaultEdgeInfo;
-
-template <class EdgeInfo = DefaultEdgeInfo>
-class Edge {
-    
-public:
-    Edge(const VertexType from, const VertexType to, const EdgeInfo info): _from(from), _to(to), _info(std::shared_ptr<EdgeInfo>(new EdgeInfo(info))) {};
-    Edge(const VertexType from, const VertexType to, std::shared_ptr<EdgeInfo> info): _from(from), _to(to), _info(info) {};
-    
-    VertexType from() { return _from; }
-    VertexType to() { return _to; }
-    std::shared_ptr<EdgeInfo> info() { return _info; }
-    
-private:
-    VertexType _from;
-    VertexType _to;
-    std::shared_ptr<EdgeInfo> _info;
-};
-
+#include <queue>
+#include <iostream>
+#include <forward_list>
+#include <vector>
+#include <queue>
+#include <forward_list>
 #include <vector>
 #include <queue>
 #include <assert.h>
 
-template <class EdgeInfo>
-std::shared_ptr<Edge<EdgeInfo>> likeNullptrButThisCompilerSucks() {
-    static auto instance = std::shared_ptr<Edge<EdgeInfo>>(new Edge<EdgeInfo>(0, 0, std::shared_ptr<EdgeInfo>(new EdgeInfo(0, 0))));
-    return instance;
-}
-
-template <class EdgeInfo>
-class ArcGraph {
-    
+class Graph {
 public:
+    typedef std::forward_list<VertexType> VertexesCollection;
     
-    typedef std::forward_list<std::shared_ptr<Edge<EdgeInfo>>> EdgesCollection;
+    Graph(const VertexType numberOfVertexes);
+    virtual ~Graph() {}
     
-    ArcGraph(const VertexType numberOfVertexes);
-    virtual ~ArcGraph() {}
-    
-    virtual void addEdge(const VertexType from, const VertexType to, const std::shared_ptr<EdgeInfo> info);
-    virtual void addEdge(const std::shared_ptr<Edge<EdgeInfo>> edge);
+    virtual void addEdge(const VertexType from, const VertexType to);
     virtual void removeEdge(const VertexType from, const VertexType to);
-    virtual void removeEdge(const std::shared_ptr<Edge<EdgeInfo>> edge);
-    virtual void changeEdge(const VertexType from, const VertexType to, std::shared_ptr<EdgeInfo> info);
-    virtual std::shared_ptr<Edge<EdgeInfo>> getEdge(const VertexType from, const VertexType to) const;
-    virtual const bool edgeExists(const VertexType from, const VertexType to) {
-        return getEdge(from, to) != likeNullptrButThisCompilerSucks<EdgeInfo>();
-    }
     
     virtual const VertexType vertexCount() const;
-    virtual const VertexType vertexCapacity() const;
-    virtual const EdgesCollection getNextEdges(const VertexType vertex) const;
-    virtual const EdgesCollection getPrevEdges(const VertexType vertex) const;
-    virtual std::shared_ptr<const std::vector<const VertexType>> getAllVertexes() const;
+    virtual const VertexesCollection getNextVertexes(const VertexType vertex) const;
+    virtual const VertexesCollection getPrevVertexes(const VertexType vertex) const;
     
-    virtual void BFS(const VertexType start, const std::function<void(const std::shared_ptr<Edge<EdgeInfo>> edge)>);
+    virtual void BFS(const VertexType start, const std::function<void(const VertexType from, const VertexType to)> completionBlock);
     
-    
-protected:
-    ArcGraph() {}
-    std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>> incomingEdgesToVertex;
-    std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>> outcomingEdgesFromVertex;
+private:
+    std::vector<VertexesCollection> incomingVertexes;
+    std::vector<VertexesCollection> outcomingVertexes;
     VertexType _vertexCount;
 };
 
-template <class EdgeInfo>
-ArcGraph<EdgeInfo>:: ArcGraph(const VertexType numberOfVertexes) {
-    incomingEdgesToVertex = std::move(std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>>(numberOfVertexes, std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>()));
-    outcomingEdgesFromVertex = std::move(std::vector<std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>>(numberOfVertexes, std::forward_list<std::shared_ptr<Edge<EdgeInfo>>>()));
+Graph:: Graph(const VertexType numberOfVertexes) {
+    incomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
+    outcomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
     _vertexCount = numberOfVertexes;
 }
 
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>:: addEdge(const VertexType from, const VertexType to, const std::shared_ptr<EdgeInfo> info) {
-    assert((from < incomingEdgesToVertex.size()) && (to < outcomingEdgesFromVertex.size()));
-    auto edge = std::shared_ptr<Edge<EdgeInfo>>(new Edge<EdgeInfo>(from, to, *info));
-    incomingEdgesToVertex[to].push_front(edge);
-    outcomingEdgesFromVertex[from].push_front(edge);
+void Graph:: addEdge(const VertexType from, const VertexType to) {
+    incomingVertexes[to].push_front(from);
+    outcomingVertexes[from].push_front(to);
 }
 
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>::addEdge(const std::shared_ptr<Edge<EdgeInfo>> edge) {
-    auto from = edge->from();
-    auto to = edge->to();
-    assert((from < incomingEdgesToVertex.size()) && (to < outcomingEdgesFromVertex.size()));
-    incomingEdgesToVertex[to].push_front(edge);
-    outcomingEdgesFromVertex[from].push_front(edge);
-}
-
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>:: removeEdge(const VertexType from, const VertexType to) {
-    assert((from < incomingEdgesToVertex.size()) && (to < outcomingEdgesFromVertex.size()));
-    incomingEdgesToVertex[to].remove_if([&from](std::shared_ptr<Edge<EdgeInfo>> edge) {
-        return edge->from() == from;
+void Graph:: removeEdge(const VertexType from, const VertexType to) {
+    assert((from < incomingVertexes.size()) && (to < outcomingVertexes.size()));
+    incomingVertexes[to].remove_if([&from](const VertexType vertex) {
+        return from == vertex;
     });
-    outcomingEdgesFromVertex[from].remove_if([&to](std::shared_ptr<Edge<EdgeInfo>> edge) {
-        return edge->to() == to;
+    outcomingVertexes[from].remove_if([&to](const VertexType vertex) {
+        return to == vertex;
     });
 }
 
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>:: removeEdge(const std::shared_ptr<Edge<EdgeInfo>> edge) {
-    incomingEdgesToVertex[edge->to()].remove(edge);
-    outcomingEdgesFromVertex[edge->from()].remove(edge);
-}
-
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>:: changeEdge(const VertexType from, const VertexType to, std::shared_ptr<EdgeInfo> info) {
-    assert(false);
-}
-
-
-template <class EdgeInfo>
-std::shared_ptr<Edge<EdgeInfo>> ArcGraph<EdgeInfo>:: getEdge(const VertexType from, const VertexType to) const {
-    for (auto it = incomingEdgesToVertex[to].begin(); it != incomingEdgesToVertex[to].end(); ++it) {
-        if ((*it)->from() == from) {
-            return *it;
-        }
-    }
-//    return nullptr;
-    return likeNullptrButThisCompilerSucks<EdgeInfo>();
-}
-
-template <class EdgeInfo>
-const VertexType ArcGraph<EdgeInfo>:: vertexCount() const {
+const VertexType Graph:: vertexCount() const {
     return _vertexCount;
 }
 
-template <class EdgeInfo>
-const VertexType ArcGraph<EdgeInfo>:: vertexCapacity() const {
-    return _vertexCount;
+const typename Graph::VertexesCollection Graph:: getNextVertexes(const VertexType vertex) const {
+    return outcomingVertexes[vertex];
 }
 
-template <class EdgeInfo>
-const typename ArcGraph<EdgeInfo>::EdgesCollection ArcGraph<EdgeInfo>:: getNextEdges(const VertexType vertex) const {
-    return outcomingEdgesFromVertex[vertex];
+const typename Graph::VertexesCollection Graph:: getPrevVertexes(const VertexType vertex) const {
+    return incomingVertexes[vertex];
 }
 
-template <class EdgeInfo>
-const typename ArcGraph<EdgeInfo>::EdgesCollection ArcGraph<EdgeInfo>:: getPrevEdges(const VertexType vertex) const {
-    return incomingEdgesToVertex[vertex];
-}
-
-template <class EdgeInfo>
-std::shared_ptr<const std::vector<const VertexType>> ArcGraph<EdgeInfo>:: getAllVertexes() const {
-    assert(false);
-    return std::shared_ptr<const std::vector<const VertexType>>();
-}
-
-template <class EdgeInfo>
-void ArcGraph<EdgeInfo>:: BFS(const VertexType start, const std::function<void(const std::shared_ptr<Edge<EdgeInfo>> edge)> completionBlock) {
+void Graph:: BFS(const VertexType start, const std::function<void(const VertexType from, const VertexType to)> completionBlock) {
     std::queue<VertexType> vertexQueue;
     std::vector<VertexType> used(vertexCount());
     vertexQueue.push(start);
@@ -180,156 +87,216 @@ void ArcGraph<EdgeInfo>:: BFS(const VertexType start, const std::function<void(c
         vertexQueue.pop();
         if (!used[currentVertex]) {
             used[currentVertex] = 1;
-            auto nextEdges = getNextEdges(currentVertex);
+            auto nextEdges = getNextVertexes(currentVertex);
             for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
-                vertexQueue.push((*it)->to());
-                completionBlock(*it);
+                vertexQueue.push(*it);
+                completionBlock(currentVertex, *it);
             }
         }
     }
 }
 
 
-typedef long FlowType;
-typedef unsigned long CapacityType;
-
-class NetworkEdgeInfo {
+class FlowKeeper {
     
 public:
-    NetworkEdgeInfo(CapacityType capacity): _flow(0), _capacity(capacity) {};
-    NetworkEdgeInfo(FlowType flow, CapacityType capacity): _flow(flow), _capacity(capacity){};
-    virtual FlowType flow() { return _flow; }
-    virtual CapacityType capacity() { return _capacity; }
-    virtual CapacityType residualCapacity() { return _capacity - _flow; }
-    virtual void setFlow(FlowType flow) {
-        assert(flow <= capacity());
-        _flow = flow;
-    }
-    virtual void setCapacity(CapacityType capacity) {
-        assert(flow() <= capacity);
-        _capacity = capacity;
-    }
-protected:
-    FlowType _flow;
-    CapacityType _capacity;
-};
-
-
-#include <functional>
-
-#define NOT_VISITED INT_MAX
-
-
-class NetworkGraph: public ArcGraph<NetworkEdgeInfo> {
     
-public:
-    NetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink): ArcGraph<NetworkEdgeInfo>(numberOfVertexes), source(source), sink(sink) {};
-    virtual const void performCompletionBlockOnNextEdges(const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock) {
-        return performCompletionBlockOnEdgesWithDirection(1, vertex, completionBlock);
-    }
-    virtual const void performCompletionBlockOnPrevEdges(const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock) {
-        return performCompletionBlockOnEdgesWithDirection(0, vertex, completionBlock);
-    }
-    virtual CapacityType getCapacity(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-        return edge->info()->capacity();
-    }
-    virtual FlowType getFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-        return edge->info()->flow();
-    }
-    virtual void print(const VertexType start) {
-        BFS(start, [this](std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-            std::cout<<edge->from()<<"->"<<edge->to()<<" ("<<getFlow(edge)<<"/"<<getCapacity(edge) <<")"<<std::endl;
-        });
-    }
-    const VertexType source;
-    const VertexType sink;
+    FlowKeeper(const VertexType numberOfVertexes);
+    const FlowType flow(const VertexType from, const VertexType to) const;
+    const CapacityType capacity(const VertexType from, const VertexType to) const;
+    const CapacityType residualCapacity(const VertexType from, const VertexType to) const;
+    void pushFlow(const FlowType flow, const VertexType from, const VertexType to);
+    void addCapacity(const CapacityType capacity, const VertexType from, const VertexType to);
 private:
-    virtual const void performCompletionBlockOnEdgesWithDirection(const bool isFrontDirection, const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock);
+    std::vector<std::vector<FlowType>> _flow;
+    std::vector<std::vector<CapacityType>> _capacity;
 };
 
-const void NetworkGraph:: performCompletionBlockOnEdgesWithDirection(const bool isFrontDirection, const VertexType vertex, const std::function<void(const std::shared_ptr<Edge<NetworkEdgeInfo>> edge)> completionBlock) {
-    auto edges = isFrontDirection ? getNextEdges(vertex) : getPrevEdges(vertex);
-    for (auto it = edges.begin(); it != edges.end(); ++it) {
-        if (getCapacity(*it) > 0) {
-            completionBlock(*it);
+FlowKeeper:: FlowKeeper(const VertexType numberOfVertexes) {
+    _flow = std::move(std::vector<std::vector<FlowType>>(numberOfVertexes, std::vector<FlowType>(numberOfVertexes)));
+    _capacity = std::move(std::vector<std::vector<CapacityType>>(numberOfVertexes, std::vector<CapacityType>(numberOfVertexes)));
+}
+
+void FlowKeeper:: pushFlow(const FlowType flow, const VertexType from, const VertexType to) {
+    assert(_flow[from][to] + flow <= _capacity[from][to]);
+    _flow[from][to] += flow;
+    _flow[to][from] -= flow;
+}
+
+void FlowKeeper:: addCapacity(const CapacityType capacity, const VertexType from, const VertexType to) {
+    _capacity[from][to] += capacity;
+}
+
+
+const FlowType FlowKeeper:: flow(const VertexType from, const VertexType to) const {
+    return _flow[from][to];
+}
+
+const CapacityType FlowKeeper:: capacity(const VertexType from, const VertexType to) const {
+    return _capacity[from][to];
+}
+
+const CapacityType FlowKeeper:: residualCapacity(const VertexType from, const VertexType to) const {
+    return _capacity[from][to] - _flow[from][to];
+}
+
+class Edge {
+public:
+    VertexType from;
+    VertexType to;
+    CapacityType capacity;
+    Edge(VertexType from, VertexType to, CapacityType capacity): from(from), to(to), capacity(capacity) {}
+};
+
+class ResidualNetworkGraph: public Graph {
+    
+public:
+    
+    typedef std::forward_list<VertexType> VertexesCollection;
+    
+    ResidualNetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink);
+    
+    virtual void addEdge(const VertexType from, const VertexType to, const FlowType flow, const CapacityType capacity);
+    virtual void pushFlow(const FlowType flow, const VertexType from, const VertexType to);
+    
+    virtual void performCompletionBlockOnNextVertexes(const VertexType vertex, std::function<void(const VertexType from, const VertexType to)> completionBlock);
+    virtual void performCompletionBlockOnPrevVertexes(const VertexType vertex, std::function<void(const VertexType from, const VertexType to)> completionBlock);
+    
+    virtual void print(const VertexType start);
+    
+    virtual const FlowType flow(const VertexType from, const VertexType to) { return flowKeeper->flow(from, to); }
+    virtual const CapacityType capacity(const VertexType from, const VertexType to) { return flowKeeper->capacity(from, to); }
+    virtual const CapacityType residualCapacity(const VertexType from, const VertexType to) { return flowKeeper->residualCapacity(from, to); }
+    
+    virtual const VertexType getSource() { return source; }
+    virtual const VertexType getSink() { return sink; }
+    
+    virtual void printFlowOfEdges(std::vector<Edge> &edges);
+    
+protected:
+    
+    VertexType source;
+    VertexType sink;
+    
+    std::vector<VertexesCollection> incomingVertexes;
+    std::vector<VertexesCollection> outcomingVertexes;
+    VertexType _vertexCount;
+    std::shared_ptr<FlowKeeper> flowKeeper;
+    
+};
+
+void ResidualNetworkGraph:: printFlowOfEdges(std::vector<Edge> &edges) {
+    for (auto edge = edges.begin(); edge != edges.end(); ++edge) {
+        auto flow = std::min(flowKeeper->flow(edge->from, edge->to), edge->capacity);
+        assert(flow >= 0);
+        std::cout<<flow<<std::endl;
+        flowKeeper->pushFlow(-flow, edge->from, edge->to);
+    }
+}
+
+ResidualNetworkGraph:: ResidualNetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink): Graph(numberOfVertexes) {
+    incomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
+    outcomingVertexes = std::move(std::vector<VertexesCollection>(numberOfVertexes));
+    flowKeeper = std::make_shared<FlowKeeper>(numberOfVertexes);
+    _vertexCount = numberOfVertexes;
+    this->source = source;
+    this->sink = sink;
+}
+
+void ResidualNetworkGraph:: addEdge(const VertexType from, const VertexType to, const FlowType flow, const CapacityType capacity) {
+    if ((flowKeeper->capacity(from, to) == 0 && flowKeeper->capacity(to, from) == 0)) {
+        Graph::addEdge(from, to);
+        Graph::addEdge(to, from);
+    }
+    flowKeeper->addCapacity(capacity, from, to);
+    flowKeeper->pushFlow(flow, from, to);
+}
+
+void ResidualNetworkGraph:: pushFlow(FlowType flow, const VertexType from, const VertexType to) {
+    flowKeeper->pushFlow(flow, from, to);
+}
+
+
+void ResidualNetworkGraph:: print(const VertexType start) {
+    BFS(start, [this](const VertexType from, const VertexType to) {
+        std::cout<<from<<"->"<<to<<" ("<<flowKeeper->flow(from, to)<<"/"<<flowKeeper->capacity(from, to) <<")"<<std::endl;
+    });
+}
+
+void ResidualNetworkGraph:: performCompletionBlockOnNextVertexes(const VertexType vertex, std::function<void(const VertexType from, const VertexType to)> completionBlock) {
+    auto nextVertexes = getNextVertexes(vertex);
+    for (auto it = nextVertexes.begin(); it != nextVertexes.end(); ++it) {
+        if (flowKeeper->residualCapacity(vertex, *it) > 0) {
+            completionBlock(vertex, *it);
+        }
+    }
+}
+
+void ResidualNetworkGraph:: performCompletionBlockOnPrevVertexes(const VertexType vertex, std::function<void(const VertexType from, const VertexType to)> completionBlock) {
+    auto nextVertexes = getPrevVertexes(vertex);
+    for (auto it = nextVertexes.begin(); it != nextVertexes.end(); ++it) {
+        if (flowKeeper->residualCapacity(vertex, *it) > 0) {
+            completionBlock(vertex, *it);
         }
     }
 }
 
 
-#define NOT_VISITED INT_MAX
 
-class ResidualNetworkGraph: public NetworkGraph {
+class LayeredNetworkGraph: public Graph {
     
 public:
-    ResidualNetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink): NetworkGraph(numberOfVertexes, source, sink) {};
-    
-    CapacityType getCapacity(std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-        return edge->info()->capacity() - edge->info()->flow();
-    }
-    
-    void addFlow(std::shared_ptr<Edge<NetworkEdgeInfo>> edge, const FlowType flow) {
-        auto oldFlow = edge->info()->flow();
-        auto to = edge->to();
-        auto from = edge->from();
-        assert(getEdge(from, to) != likeNullptrButThisCompilerSucks<NetworkEdgeInfo>());
-        edge->info()->setFlow(oldFlow + flow);
-        auto reversedEdge = getEdge(to, from);
-        if (!reversedEdge) {
-            auto info = std::shared_ptr<NetworkEdgeInfo>(new NetworkEdgeInfo(0, edge->info()->flow()));
-            addEdge(to, from, info);
-        } else {
-            reversedEdge->info()->setCapacity(reversedEdge->info()->capacity() + flow);
-        }
-    }
-    
-    virtual void print(const VertexType start) {
-        BFS(start, [this](std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-            std::cout<<edge->from()<<"->"<<edge->to()<<" ("<<getCapacity(edge) <<")"<<std::endl;
-        });
-    }
-    
-private:
-    
-};
-
-
-
-
-class LayeredNetwork: public NetworkGraph {
-public:
-    LayeredNetwork(std::shared_ptr<ResidualNetworkGraph>  residualNetwork): NetworkGraph(residualNetwork->vertexCapacity(), residualNetwork->source, residualNetwork->sink) {
-        _sinkReachable = false;
-        _residualNetwork = residualNetwork;
-        createLayeredNetwork();
+    LayeredNetworkGraph(const VertexType numberOfVertexes) = delete;
+    LayeredNetworkGraph(ResidualNetworkGraph *residualNetwork): Graph(residualNetwork->vertexCount()), residualNetwork(residualNetwork), source(residualNetwork->getSource()), sink(residualNetwork->getSink()) {
+//        NOT_REACHED = std::numeric_limits<VertexType>::max();
+        NOT_REACHED = 18446744073709551615;
+//        MAX_POTENTIAL = std::numeric_limits<CapacityType>::max();
+        MAX_POTENTIAL = 9223372036854775807;
+        init();
     }
     
     void getBlockingFlow();
+    bool sinkReachable();
     
-    bool sinkReachable() { return _sinkReachable; }
+    void print(const VertexType start);
 private:
-    bool _sinkReachable;
-    void updatePotentials(std::set<VertexType> &vertexesToDelete);
-    void createLayeredNetwork();
-    std::shared_ptr<ResidualNetworkGraph> _residualNetwork;
+    VertexType NOT_REACHED;
+    CapacityType MAX_POTENTIAL;
+    
+    void pushFront(const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate);
+    void pushBackward(const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate);
+    void pushWithDirection(bool isFront, const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate);
+    void updatePotentials(std::set<VertexType> &vertexesToUpdate);
+    
+    
+    VertexType source;
+    VertexType sink;
+    void init();
+    ResidualNetworkGraph *residualNetwork;
     std::vector<VertexType> distance;
-    std::vector<VertexType> incPotential;
-    std::vector<VertexType> outPotential;
+    std::vector<CapacityType> incPotential;
+    std::vector<CapacityType> outPotential;
     std::vector<CapacityType> potential;
     std::vector<FlowType> extraFlow;
 };
 
-void LayeredNetwork:: createLayeredNetwork() {
-    distance = std::vector<VertexType>(_residualNetwork->vertexCount(), NOT_VISITED);
-    incPotential = std::vector<VertexType>(_residualNetwork->vertexCount(), 0);
-    outPotential = std::vector<VertexType>(_residualNetwork->vertexCount(), 0);
-    potential = std::vector<CapacityType>(_residualNetwork->vertexCount(), NOT_VISITED);
-    extraFlow = std::vector<FlowType>(_residualNetwork->vertexCount(), 0);
-    std::vector<VertexType> used(_residualNetwork->vertexCount());
+
+
+bool LayeredNetworkGraph:: sinkReachable() {
+    return distance[sink] != NOT_REACHED;
+}
+
+void LayeredNetworkGraph:: init() {
+    distance = std::vector<VertexType>(residualNetwork->vertexCount(), NOT_REACHED);
+    incPotential = std::vector<CapacityType>(residualNetwork->vertexCount(), 0);
+    outPotential = std::vector<CapacityType>(residualNetwork->vertexCount(), 0);
+    potential = std::vector<CapacityType>(residualNetwork->vertexCount(), MAX_POTENTIAL);
+    extraFlow = std::vector<FlowType>(residualNetwork->vertexCount(), 0);
+    std::vector<VertexType> used(residualNetwork->vertexCount());
     std::queue<VertexType>  vertexQueue;
     
-    incPotential[source] = NOT_VISITED;
-    outPotential[sink] = NOT_VISITED;
+    incPotential[source] = MAX_POTENTIAL;
+    outPotential[sink] = MAX_POTENTIAL;
     
     vertexQueue.push(source);
     distance[source] = 0;
@@ -338,21 +305,17 @@ void LayeredNetwork:: createLayeredNetwork() {
         vertexQueue.pop();
         if (!used[currentVertex]) {
             used[currentVertex] = 1;
-            auto nextEdges = _residualNetwork->getNextEdges(currentVertex);
-            for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
-                if ((*it)->info()->residualCapacity() > 0) {
-                    if (distance[(*it)->to()] == NOT_VISITED) {
-                        distance[(*it)->to()] = distance[currentVertex] + 1;
-                    }
-                    if (distance[(*it)->to()] == distance[currentVertex] + 1) {
-                        addEdge(*it);
-                        incPotential[(*it)->to()] += (*it)->info()->residualCapacity();
-                        outPotential[(*it)->from()] += (*it)->info()->residualCapacity();
-                        
-                    }
-                    vertexQueue.push((*it)->to());
+            residualNetwork->performCompletionBlockOnNextVertexes(currentVertex, [this, &vertexQueue](const VertexType from, const VertexType to) {
+                if (distance[to] == NOT_REACHED) {
+                    distance[to] = distance[from] + 1;
                 }
-            }
+                if (distance[to] == distance[from] + 1) {
+                    this->addEdge(from, to);
+                    incPotential[to] += residualNetwork->residualCapacity(from, to);
+                    outPotential[from] += residualNetwork->residualCapacity(from, to);
+                }
+                vertexQueue.push(to);
+            });
             
             potential[currentVertex] = std::min(incPotential[currentVertex], outPotential[currentVertex]);
             
@@ -361,19 +324,15 @@ void LayeredNetwork:: createLayeredNetwork() {
 #endif
         }
     }
-    _sinkReachable = (distance[sink] != NOT_VISITED);
 }
 
-void LayeredNetwork:: getBlockingFlow() {
-    while (potential[source] != USED_VERTEX && potential[sink] != USED_VERTEX) {
+void LayeredNetworkGraph:: getBlockingFlow() {
+    while (potential[source] != MAX_POTENTIAL && potential[sink] != MAX_POTENTIAL) {
         std::set<VertexType> vertexesToDelete;
-        std::queue<VertexType> pushingQueue;
-        std::vector<char> used(vertexCapacity(), 0);
-        
-        auto getIndexOfMinElement = [](const std::vector<CapacityType>& v) -> unsigned long long {
+        auto getIndexOfMinElement = [](const std::vector<CapacityType>& v) -> VertexType {
             CapacityType min = v[0];
-            unsigned long long minIndex = 0;
-            for (unsigned long long i = 1; i < v.size(); ++i) {
+            VertexType minIndex = 0;
+            for (VertexType i = 1; i < v.size(); ++i) {
                 if (min > v[i]) {
                     min = v[i];
                     minIndex = i;
@@ -383,179 +342,189 @@ void LayeredNetwork:: getBlockingFlow() {
         };
         
         VertexType vertexWithMinPotential = getIndexOfMinElement(potential);
-        extraFlow[vertexWithMinPotential] = potential[vertexWithMinPotential];
-        pushingQueue.push(vertexWithMinPotential);
-        
-        //forward:
-        while (!pushingQueue.empty()) {
-            auto currentVertex = pushingQueue.front();
-            pushingQueue.pop();
-            if (!used[currentVertex]) {
-                used[currentVertex] = 1;
-                auto nextEdges = getNextEdges(currentVertex);
-                for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
-                    auto edge = *it;
-                    auto residualCapacity = edge->info()->residualCapacity();
-                    auto to = edge->to();
-                    FlowType pushingFlow;
-                    if (residualCapacity <= extraFlow[currentVertex]) {
-                        pushingFlow = residualCapacity;
-                    } else {
-                        pushingFlow = extraFlow[currentVertex];
+        auto flowToPush = potential[vertexWithMinPotential];
+        pushFront(flowToPush, vertexWithMinPotential, vertexesToDelete);
+        pushBackward(flowToPush, vertexWithMinPotential, vertexesToDelete);
+        updatePotentials(vertexesToDelete);
+    }
+}
+
+void LayeredNetworkGraph:: pushFront(const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate) {
+    pushWithDirection(1, flow, vertexWithMinPotential, vertexesToUpdate);
+}
+
+void LayeredNetworkGraph:: pushBackward(const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate) {
+    pushWithDirection(0, flow, vertexWithMinPotential,vertexesToUpdate);
+}
+
+void LayeredNetworkGraph:: pushWithDirection(bool isFront, const CapacityType flow, const VertexType vertexWithMinPotential, std::set<VertexType> &vertexesToUpdate) {
+    
+    std::queue<VertexType> pushingQueue;
+    std::vector<char> used(vertexCount(), 0);
+    extraFlow[vertexWithMinPotential] = flow;
+    pushingQueue.push(vertexWithMinPotential);
+    
+    while (!pushingQueue.empty()) {
+        auto currentVertex = pushingQueue.front();
+        pushingQueue.pop();
+        if (!used[currentVertex]) {
+            used[currentVertex] = 1;
+            auto nextVertexes = (isFront ? getNextVertexes(currentVertex) : getPrevVertexes(currentVertex));
+            for (auto it = nextVertexes.begin(); it != nextVertexes.end(); ++it) {
+#ifdef DEBUG
+                std::cout<<"FROM: "<<currentVertex <<" TO: "<<*it <<std::endl;
+#endif
+                VertexType to, from;
+                if (isFront) {
+                    from = currentVertex;
+                    to = *it;
+                    if (!(distance[*it] == (distance[currentVertex] + 1))) {
+                        continue;
                     }
-                    _residualNetwork->addFlow(edge, pushingFlow);
+                } else {
+                    from = *it;
+                    to = currentVertex;
+                    if (!(distance[*it] + 1 == (distance[currentVertex]))) {
+                        continue;
+                    }
+                }
+                
+                FlowType pushingFlow;
+                auto residualCapacity = residualNetwork->residualCapacity(from, to);
+                if (residualCapacity <= 0) {
+                    continue;
+                }
+                if (residualCapacity <= extraFlow[currentVertex]) {
+                    pushingFlow = residualCapacity;
+                } else {
+                    pushingFlow = extraFlow[currentVertex];
+                }
+                
+                residualNetwork->pushFlow(pushingFlow, from, to);
+                if (isFront) {
                     outPotential[currentVertex] -= pushingFlow;
                     incPotential[to] -= pushingFlow;
                     extraFlow[to] += pushingFlow;
                     extraFlow[currentVertex] -= pushingFlow;
                     pushingQueue.push(to);
-#ifdef DEBUG
-                    std::cout<<"from "<<edge->from() << "to "<<edge->to()<<" pushed: "<<pushingFlow<<std::endl;
-#endif
-                    if (extraFlow[currentVertex] == 0) {
-                        break;
-                    }
-                }
-                vertexesToDelete.insert(currentVertex);
-            }
-        }
-        
-        //backward:
-        extraFlow[vertexWithMinPotential] = potential[vertexWithMinPotential];
-        pushingQueue.push(vertexWithMinPotential);
-        used = std::vector<char>(vertexCapacity(), 0);
-        
-        while (!pushingQueue.empty()) {
-            auto currentVertex = pushingQueue.front();
-            pushingQueue.pop();
-            if (!used[currentVertex]) {
-                used[currentVertex] = 1;
-                auto nextEdges = getPrevEdges(currentVertex);
-                for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
-                    auto edge = *it;
-                    auto residualCapacity = edge->info()->residualCapacity();
-                    auto oldFlow = edge->info()->flow();
-                    auto from = edge->from();
-                    FlowType pushingFlow;
-                    if (residualCapacity <= extraFlow[currentVertex]) {
-                        pushingFlow = residualCapacity;
-                    } else {
-                        pushingFlow = extraFlow[currentVertex];
-                    }
-                    _residualNetwork->addFlow(edge, pushingFlow);
+                } else {
                     incPotential[currentVertex] -= pushingFlow;
                     outPotential[from] -= pushingFlow;
-                    potential[currentVertex] -= pushingFlow;
                     extraFlow[from] += pushingFlow;
                     extraFlow[currentVertex] -= pushingFlow;
                     pushingQueue.push(from);
-#ifdef DEBUG
-                    std::cout<<"(backward) from "<<edge->from() << "to "<<edge->to()<<" pushed: "<<pushingFlow<<std::endl;
-#endif
-                    if (extraFlow[currentVertex] == 0) {
-                        break;
-                    }
                 }
-                vertexesToDelete.insert(currentVertex);
+#ifdef DEBUG
+                std::cout<<"Pushed "<<pushingFlow <<" from " << currentVertex <<"to "<<*it<<std::endl;
+#endif
+                
+                if (extraFlow[currentVertex] == 0) {
+                    break;
+                }
             }
+            vertexesToUpdate.insert(currentVertex);
         }
-        updatePotentials(vertexesToDelete);
     }
 }
 
-void LayeredNetwork:: updatePotentials(std::set<VertexType> &vertexesToDelete) {
-    while (!vertexesToDelete.empty()) {
-        auto currentVertex = *vertexesToDelete.begin();
-        vertexesToDelete.erase(currentVertex);
+void LayeredNetworkGraph:: updatePotentials(std::set<VertexType> &vertexesToUpdate) {
+    while (!vertexesToUpdate.empty()) {
+        auto currentVertex = *vertexesToUpdate.begin();
+        vertexesToUpdate.erase(currentVertex);
         potential[currentVertex] = std::min(incPotential[currentVertex], outPotential[currentVertex]);
         if (potential[currentVertex] <= 0) {
-            potential[currentVertex] = USED_VERTEX;
-            auto nextEdges = getNextEdges(currentVertex);
-            auto prevEdges = getPrevEdges(currentVertex);
-            for (auto it = nextEdges.begin(); it != nextEdges.end(); ++it) {
-                removeEdge(*it);
-                auto to = (*it)->to();
-                vertexesToDelete.insert(to);
-                incPotential[to] -= (*it)->info()->residualCapacity();
+            potential[currentVertex] = MAX_POTENTIAL;
+            auto nextVertexes = getNextVertexes(currentVertex);
+            auto prevVertexes = getPrevVertexes(currentVertex);
+            for (auto it = nextVertexes.begin(); it != nextVertexes.end(); ++it) {
+                removeEdge(currentVertex, *it);
+                vertexesToUpdate.insert(*it);
+                incPotential[*it] -= residualNetwork->residualCapacity(currentVertex, *it);
             }
-            for (auto it = prevEdges.begin(); it != prevEdges.end(); ++it) {
-                removeEdge(*it);
-                auto from = (*it)->from();
-                vertexesToDelete.insert(from);
-                outPotential[from] -= (*it)->info()->residualCapacity();
+            for (auto it = prevVertexes.begin(); it != prevVertexes.end(); ++it) {
+                removeEdge(*it, currentVertex);
+                vertexesToUpdate.insert(*it);
+                outPotential[*it] -= residualNetwork->residualCapacity(*it, currentVertex);
             }
         }
     }
-    
 }
-#include <set>
 
-class GraphManager {
+void LayeredNetworkGraph:: print(const VertexType start) {
+    BFS(start, [this](const VertexType from, const VertexType to) {
+        std::cout<<from<<"->"<<to<<" ("<<residualNetwork->flow(from, to)<<"/"<<residualNetwork->capacity(from, to) <<")"<<std::endl;
+    });
+}
+
+
+class MKMMaxFlowManager {
 public:
-    static GraphManager& sharedInstance() {
-        static auto instance = GraphManager();
-        return instance;
-    }
-    
-    FlowType maxFlowWithMPMAlgorithm(std::shared_ptr<ResidualNetworkGraph> graph);
+    MKMMaxFlowManager(ResidualNetworkGraph *residualNetwork): residualNetwork(residualNetwork) {};
+    const VertexType getMaxFlow();
 private:
-    GraphManager() {}
+    ResidualNetworkGraph *residualNetwork;
 };
 
-FlowType GraphManager:: maxFlowWithMPMAlgorithm(std::shared_ptr<ResidualNetworkGraph> residualNetwork) {
+const VertexType MKMMaxFlowManager:: getMaxFlow() {
     while (true) {
-        auto layeredGraph = std::shared_ptr<LayeredNetwork>(new LayeredNetwork(residualNetwork));
+        auto layeredGraph = LayeredNetworkGraph(residualNetwork);
         
 #ifdef DEBUG
         std::cout<<"layered graph created"<<std::endl;
-        residualNetwork->print(residualNetwork->source);
-        //            layeredGraph->BFS(0, [](const std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-        //                std::cout<<edge->from() <<"->"<<edge->to() <<"("<<edge->info()->flow()<<"/"<<edge->info()->capacity()<<")"<<std::endl;
-        //            });
+        layeredGraph.print(residualNetwork->getSource());
 #endif
         
-        if (!(layeredGraph->sinkReachable())) {
+        if (!(layeredGraph.sinkReachable())) {
             break;
         }
         
-        layeredGraph->getBlockingFlow();
+        layeredGraph.getBlockingFlow();
 #ifdef DEBUG
         std::cout<<"Blocking path added"<<std::endl;
-        residualNetwork->print(residualNetwork->source);
-        //            residualNetwork->BFS(0, [](const std::shared_ptr<Edge<NetworkEdgeInfo>> edge) {
-        //                std::cout<<edge->from() <<"->"<<edge->to() <<"("<<edge->info()->flow()<<"/"<<edge->info()->capacity()<<")"<<std::endl;
-        //            });
-        
+        residualNetwork->print(residualNetwork->getSource());
 #endif
     }
     FlowType maxFlow = 0;
-    auto sourceAdjEdges = residualNetwork->getNextEdges(residualNetwork->source);
+    auto sourceAdjEdges = residualNetwork->getNextVertexes(residualNetwork->getSource());
     for (auto it = sourceAdjEdges.begin(); it != sourceAdjEdges.end(); ++it) {
-        maxFlow += (*it)->info()->flow();
+        maxFlow += residualNetwork->flow(residualNetwork->getSource(), *it);
     }
     return maxFlow;
 }
 
-
 int main(int argc, const char * argv[]) {
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    
     int n, m;
+    std::vector<Edge> edgesToPrint;
     std::cin>>n >>m;
-    std::vector<std::shared_ptr<NetworkEdgeInfo>> infoToOutput;
-    auto residual = std::shared_ptr<ResidualNetworkGraph>(new ResidualNetworkGraph(n , 0, n - 1));
+    
+    auto residual = new ResidualNetworkGraph(n, 0, n - 1);
     for (int i = 0; i < m; ++i) {
         int from, to, capacity;
-        std::cin>>from >> to >> capacity;
-        auto info = std::shared_ptr<NetworkEdgeInfo>(new NetworkEdgeInfo(0, capacity));
-        auto edge = std::shared_ptr<Edge<NetworkEdgeInfo>>(new Edge<NetworkEdgeInfo>(from - 1, to - 1, info));
-        residual->addEdge(edge);
-        infoToOutput.push_back(info);
+        std::cin>>from;
+        std::cin>>to;
+        std::cin>>capacity;
+        residual->addEdge(from - 1, to - 1, 0, capacity);
+        edgesToPrint.push_back(Edge(from - 1, to - 1, capacity));
+        //        if (from == 0 && to == 1) {
+        //            residual->pushFlow(1, edge);
+        //        }
     }
+    std::cout<<"Я ЗАКОНЧИЛ ВВОД"<<std::endl;
+    //    residual->pushFlow(1, 0, 2);
+    //    residual->pushFlow(1, 1, 3);
+//    std::cout<<"Residual:"<<std::endl;
+//    residual->print(0);
+    //    std::cout<<"Layered:"<<std::endl;
+    //    auto layered = std::make_shared<LayeredNetworkGraph>(residual);
+    //    layered->print(0);
     
-    std::cout<<GraphManager::sharedInstance().maxFlowWithMPMAlgorithm(residual); std::cout<<std::endl;
-    for (auto it = infoToOutput.begin(); it != infoToOutput.end(); ++it) {
-        std::cout<<(*it)->flow()<<std::endl;
-    }
-    
+    auto manager = MKMMaxFlowManager(residual);
+    auto maxFlow = manager.getMaxFlow();
+    std::cout<<maxFlow<<std::endl;
+    residual->printFlowOfEdges(edgesToPrint);
+    delete residual;
     return 0;
 }
-

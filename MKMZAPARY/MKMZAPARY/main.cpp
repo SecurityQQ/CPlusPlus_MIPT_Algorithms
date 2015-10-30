@@ -8,14 +8,14 @@
 
 #include <iostream>
 #include "LayeredNetworkGraph.hpp"
-
 #include "MKMMaxFlowManager.hpp"
-
-
-//#include "LayeredNetworkGraph.h"
-//#include <array>
-//#include "Graph.h"
-
+//struct EdgeToShow {
+//    VertexType from;
+//    VertexType to;
+//    FlowType flow;
+//    EdgeToShow(VertexType from, VertexType to, FlowType flow)
+//};
+#undef DEBUG
 int main(int argc, const char * argv[]) {
     int n, m;
     std::cin>>n >>m;
@@ -28,10 +28,11 @@ int main(int argc, const char * argv[]) {
 //            residual->pushFlow(1, edge);
 //        }
     }
+//    std::cout<<"Input finished\n";
 //    residual->pushFlow(1, 0, 2);
 //    residual->pushFlow(1, 1, 3);
-    std::cout<<"Residual:"<<std::endl;
-    residual->print(0);
+//    std::cout<<"Residual:"<<std::endl;
+//    residual->print(0);
 //    std::cout<<"Layered:"<<std::endl;
 //    auto layered = std::make_shared<LayeredNetworkGraph>(residual);
 //    layered->print(0);
