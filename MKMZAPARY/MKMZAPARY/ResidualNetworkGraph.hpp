@@ -18,7 +18,7 @@
 class ResidualNetworkGraph: public Graph {
     
 public:
-    
+    //TODO: using::
     typedef std::forward_list<VertexType> VertexesCollection;
     
     ResidualNetworkGraph(const VertexType numberOfVertexes, const VertexType source, const VertexType sink);
@@ -38,7 +38,7 @@ public:
     virtual const VertexType getSource() { return source; }
     virtual const VertexType getSink() { return sink; }
     
-protected:
+private:
     
     VertexType source;
     VertexType sink;

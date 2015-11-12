@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9570F2921BEC0BC2009C3D3C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9570F2911BEC0BC2009C3D3C /* main.cpp */; settings = {ASSET_TAGS = (); }; };
+		950B906E1BF53F5F00E7C39A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950B906D1BF53F5F00E7C39A /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9567E3951BDA051E0053511A /* CopyFiles */ = {
+		950B90681BF53F5F00E7C39A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,18 +23,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9552A1281BDD81840092C9AF /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
-		9552A1291BDD83A40092C9AF /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResidualNetworkGraph.hpp; sourceTree = "<group>"; };
-		9552A1301BDFFA980092C9AF /* MKMMaxFlowManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MKMMaxFlowManager.hpp; sourceTree = "<group>"; };
-		9552A1331BE001DF0092C9AF /* LayeredNetworkGraph.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayeredNetworkGraph.hpp; sourceTree = "<group>"; };
-		9567E3971BDA051E0053511A /* MKMZAPARY */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MKMZAPARY; sourceTree = BUILT_PRODUCTS_DIR; };
-		9567E3A31BDA163A0053511A /* FlowKeeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlowKeeper.h; sourceTree = "<group>"; };
-		9570F2911BEC0BC2009C3D3C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		950B906A1BF53F5F00E7C39A /* AHO-KORASIK */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AHO-KORASIK"; sourceTree = BUILT_PRODUCTS_DIR; };
+		950B906D1BF53F5F00E7C39A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		950B90741BF53F7A00E7C39A /* IGOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGOR.h; sourceTree = "<group>"; };
+		950B90751BF5414D00E7C39A /* AKAutomata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKAutomata.h; sourceTree = "<group>"; };
+		950B90761BF5427B00E7C39A /* AKNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9567E3941BDA051E0053511A /* Frameworks */ = {
+		950B90671BF53F5F00E7C39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,100 +41,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9567E38E1BDA051E0053511A = {
+		950B90611BF53F5F00E7C39A = {
 			isa = PBXGroup;
 			children = (
-				9567E3991BDA051E0053511A /* MKMZAPARY */,
-				9567E3981BDA051E0053511A /* Products */,
+				950B906C1BF53F5F00E7C39A /* AHO-KORASIK */,
+				950B906B1BF53F5F00E7C39A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9567E3981BDA051E0053511A /* Products */ = {
+		950B906B1BF53F5F00E7C39A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9567E3971BDA051E0053511A /* MKMZAPARY */,
+				950B906A1BF53F5F00E7C39A /* AHO-KORASIK */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9567E3991BDA051E0053511A /* MKMZAPARY */ = {
+		950B906C1BF53F5F00E7C39A /* AHO-KORASIK */ = {
 			isa = PBXGroup;
 			children = (
-				9570F2911BEC0BC2009C3D3C /* main.cpp */,
-				9552A1301BDFFA980092C9AF /* MKMMaxFlowManager.hpp */,
-				9552A12D1BDFF00C0092C9AF /* ResidualNetworkGraph.hpp */,
-				9552A1281BDD81840092C9AF /* Graph.h */,
-				9552A1291BDD83A40092C9AF /* Constants.h */,
-				9567E3A31BDA163A0053511A /* FlowKeeper.h */,
-				9552A1331BE001DF0092C9AF /* LayeredNetworkGraph.hpp */,
+				950B906D1BF53F5F00E7C39A /* main.cpp */,
+				950B90741BF53F7A00E7C39A /* IGOR.h */,
+				950B90751BF5414D00E7C39A /* AKAutomata.h */,
+				950B90761BF5427B00E7C39A /* AKNode.h */,
 			);
-			path = MKMZAPARY;
+			path = "AHO-KORASIK";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9567E3961BDA051E0053511A /* MKMZAPARY */ = {
+		950B90691BF53F5F00E7C39A /* AHO-KORASIK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9567E39E1BDA051E0053511A /* Build configuration list for PBXNativeTarget "MKMZAPARY" */;
+			buildConfigurationList = 950B90711BF53F5F00E7C39A /* Build configuration list for PBXNativeTarget "AHO-KORASIK" */;
 			buildPhases = (
-				9567E3931BDA051E0053511A /* Sources */,
-				9567E3941BDA051E0053511A /* Frameworks */,
-				9567E3951BDA051E0053511A /* CopyFiles */,
+				950B90661BF53F5F00E7C39A /* Sources */,
+				950B90671BF53F5F00E7C39A /* Frameworks */,
+				950B90681BF53F5F00E7C39A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MKMZAPARY;
-			productName = MKMZAPARY;
-			productReference = 9567E3971BDA051E0053511A /* MKMZAPARY */;
+			name = "AHO-KORASIK";
+			productName = "AHO-KORASIK";
+			productReference = 950B906A1BF53F5F00E7C39A /* AHO-KORASIK */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9567E38F1BDA051E0053511A /* Project object */ = {
+		950B90621BF53F5F00E7C39A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alexander Malyshev";
 				TargetAttributes = {
-					9567E3961BDA051E0053511A = {
+					950B90691BF53F5F00E7C39A = {
 						CreatedOnToolsVersion = 7.0;
 					};
 				};
 			};
-			buildConfigurationList = 9567E3921BDA051E0053511A /* Build configuration list for PBXProject "MKMZAPARY" */;
+			buildConfigurationList = 950B90651BF53F5F00E7C39A /* Build configuration list for PBXProject "AHO-KORASIK" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 9567E38E1BDA051E0053511A;
-			productRefGroup = 9567E3981BDA051E0053511A /* Products */;
+			mainGroup = 950B90611BF53F5F00E7C39A;
+			productRefGroup = 950B906B1BF53F5F00E7C39A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9567E3961BDA051E0053511A /* MKMZAPARY */,
+				950B90691BF53F5F00E7C39A /* AHO-KORASIK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9567E3931BDA051E0053511A /* Sources */ = {
+		950B90661BF53F5F00E7C39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9570F2921BEC0BC2009C3D3C /* main.cpp in Sources */,
+				950B906E1BF53F5F00E7C39A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9567E39C1BDA051E0053511A /* Debug */ = {
+		950B906F1BF53F5F00E7C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -179,7 +173,7 @@
 			};
 			name = Debug;
 		};
-		9567E39D1BDA051E0053511A /* Release */ = {
+		950B90701BF53F5F00E7C39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -214,18 +208,16 @@
 			};
 			name = Release;
 		};
-		9567E39F1BDA051E0053511A /* Debug */ = {
+		950B90721BF53F5F00E7C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = /Developer/QT/5.5/clang_64/bin/qmake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		9567E3A01BDA051E0053511A /* Release */ = {
+		950B90731BF53F5F00E7C39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = /Developer/QT/5.5/clang_64/bin/qmake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -233,25 +225,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9567E3921BDA051E0053511A /* Build configuration list for PBXProject "MKMZAPARY" */ = {
+		950B90651BF53F5F00E7C39A /* Build configuration list for PBXProject "AHO-KORASIK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9567E39C1BDA051E0053511A /* Debug */,
-				9567E39D1BDA051E0053511A /* Release */,
+				950B906F1BF53F5F00E7C39A /* Debug */,
+				950B90701BF53F5F00E7C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9567E39E1BDA051E0053511A /* Build configuration list for PBXNativeTarget "MKMZAPARY" */ = {
+		950B90711BF53F5F00E7C39A /* Build configuration list for PBXNativeTarget "AHO-KORASIK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9567E39F1BDA051E0053511A /* Debug */,
-				9567E3A01BDA051E0053511A /* Release */,
+				950B90721BF53F5F00E7C39A /* Debug */,
+				950B90731BF53F5F00E7C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9567E38F1BDA051E0053511A /* Project object */;
+	rootObject = 950B90621BF53F5F00E7C39A /* Project object */;
 }

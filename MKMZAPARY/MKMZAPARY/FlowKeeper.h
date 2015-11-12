@@ -34,7 +34,7 @@ void FlowKeeper:: pushFlow(const FlowType flow, const VertexType from, const Ver
     _flow[from][to] += flow;
     _flow[to][from] -= flow;
 }
-
+    
 void FlowKeeper:: addCapacity(const CapacityType capacity, const VertexType from, const VertexType to) {
     _capacity[from][to] += capacity;
 }

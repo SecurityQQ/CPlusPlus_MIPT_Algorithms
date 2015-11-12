@@ -147,15 +147,9 @@ void LayeredNetworkGraph:: pushWithDirection(bool isFront, const CapacityType fl
                 if (isFront) {
                     from = currentVertex;
                     to = *it;
-                    if (!(distance[*it] == (distance[currentVertex] + 1))) {
-                        continue;
-                    }
                 } else {
                     from = *it;
                     to = currentVertex;
-                    if (!(distance[*it] + 1 == (distance[currentVertex]))) {
-                        continue;
-                    }
                 }
                 
                 FlowType pushingFlow;
@@ -184,7 +178,6 @@ void LayeredNetworkGraph:: pushWithDirection(bool isFront, const CapacityType fl
                     pushingQueue.push(from);
                 }
 #ifdef DEBUG
-#warning ПЛОХО ПУШИТ
                 std::cout<<"Pushed "<<pushingFlow <<" from " << currentVertex <<"to "<<*it<<std::endl;
 #endif
 

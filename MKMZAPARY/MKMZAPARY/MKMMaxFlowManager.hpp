@@ -29,7 +29,7 @@ const VertexType MKMMaxFlowManager:: getMaxFlow() {
         layeredGraph.print(residualNetwork->getSource());
 #endif
 
-        if (!(layeredGraph.sinkReachable())) {
+        if (!layeredGraph.sinkReachable()) {
             break;
         }
 
