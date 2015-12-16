@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		950B906E1BF53F5F00E7C39A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 950B906D1BF53F5F00E7C39A /* main.cpp */; };
+		9517C8D91BF9FF8000204E8B /* AKMaskAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9517C8D81BF9FF8000204E8B /* AKMaskAutomata.cpp */; settings = {ASSET_TAGS = (); }; };
+		9592C7581BF9F17A002CF81B /* AKNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9592C7571BF9F17A002CF81B /* AKNode.cpp */; settings = {ASSET_TAGS = (); }; };
+		9592C75A1BF9F1A6002CF81B /* AKAutomata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9592C7591BF9F1A6002CF81B /* AKAutomata.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +28,13 @@
 /* Begin PBXFileReference section */
 		950B906A1BF53F5F00E7C39A /* AHO-KORASIK */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "AHO-KORASIK"; sourceTree = BUILT_PRODUCTS_DIR; };
 		950B906D1BF53F5F00E7C39A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		950B90741BF53F7A00E7C39A /* IGOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGOR.h; sourceTree = "<group>"; };
 		950B90751BF5414D00E7C39A /* AKAutomata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKAutomata.h; sourceTree = "<group>"; };
 		950B90761BF5427B00E7C39A /* AKNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKNode.h; sourceTree = "<group>"; };
+		950B90771BF65E5C00E7C39A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		9517C8D71BF9FF7600204E8B /* AKMaskAutomata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AKMaskAutomata.h; sourceTree = "<group>"; };
+		9517C8D81BF9FF8000204E8B /* AKMaskAutomata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKMaskAutomata.cpp; sourceTree = "<group>"; };
+		9592C7571BF9F17A002CF81B /* AKNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKNode.cpp; sourceTree = "<group>"; };
+		9592C7591BF9F1A6002CF81B /* AKAutomata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AKAutomata.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +68,13 @@
 			isa = PBXGroup;
 			children = (
 				950B906D1BF53F5F00E7C39A /* main.cpp */,
-				950B90741BF53F7A00E7C39A /* IGOR.h */,
 				950B90751BF5414D00E7C39A /* AKAutomata.h */,
+				9592C7591BF9F1A6002CF81B /* AKAutomata.cpp */,
+				9517C8D71BF9FF7600204E8B /* AKMaskAutomata.h */,
+				9517C8D81BF9FF8000204E8B /* AKMaskAutomata.cpp */,
 				950B90761BF5427B00E7C39A /* AKNode.h */,
+				9592C7571BF9F17A002CF81B /* AKNode.cpp */,
+				950B90771BF65E5C00E7C39A /* Constants.h */,
 			);
 			path = "AHO-KORASIK";
 			sourceTree = "<group>";
@@ -124,7 +135,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9517C8D91BF9FF8000204E8B /* AKMaskAutomata.cpp in Sources */,
 				950B906E1BF53F5F00E7C39A /* main.cpp in Sources */,
+				9592C75A1BF9F1A6002CF81B /* AKAutomata.cpp in Sources */,
+				9592C7581BF9F17A002CF81B /* AKNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +255,7 @@
 				950B90731BF53F5F00E7C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

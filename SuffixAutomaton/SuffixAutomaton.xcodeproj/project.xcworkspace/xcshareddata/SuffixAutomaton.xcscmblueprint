@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "03BA5EFC7920D99434600E757C1AA52C64B61E76",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "03BA5EFC7920D99434600E757C1AA52C64B61E76" : 0,
+    "204E58FF69D9B20FCB0719F2BA36535877C484F5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F52CDCD4-BD2D-4412-97D9-65FB0E1DF7BD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "03BA5EFC7920D99434600E757C1AA52C64B61E76" : "CPlusPlus_MIPT_Algorithms\/",
+    "204E58FF69D9B20FCB0719F2BA36535877C484F5" : "Kholopov\/StudyingStuff\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SuffixAutomaton",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SuffixAutomaton\/SuffixAutomaton.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/SecurityQQ\/CPlusPlus_MIPT_Algorithms.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03BA5EFC7920D99434600E757C1AA52C64B61E76"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IKholopov\/StudyingStuff.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "204E58FF69D9B20FCB0719F2BA36535877C484F5"
+    }
+  ]
+}

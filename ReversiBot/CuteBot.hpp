@@ -8,7 +8,6 @@
 
 #ifndef CuteBot_hpp
 #define CuteBot_hpp
-
 #include "Constants.hpp"
 #include <iostream>
 #include <set>
