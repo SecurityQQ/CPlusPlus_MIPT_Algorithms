@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		956AA93C1C0C5DE00030E55A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA93B1C0C5DE00030E55A /* main.cpp */; };
+		956AA9471C0E28660030E55A /* UKSuffixTreeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA9451C0E28660030E55A /* UKSuffixTreeNode.cpp */; settings = {ASSET_TAGS = (); }; };
+		956AA94E1C0E59590030E55A /* UKSuffixTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA94C1C0E59590030E55A /* UKSuffixTree.cpp */; settings = {ASSET_TAGS = (); }; };
+		956AA9531C2062B60030E55A /* ExplicitState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA9511C2062B60030E55A /* ExplicitState.cpp */; settings = {ASSET_TAGS = (); }; };
+		956AA9541C2062B60030E55A /* SuffixTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA9521C2062B60030E55A /* SuffixTree.cpp */; settings = {ASSET_TAGS = (); }; };
+		956AA9581C20633D0030E55A /* EnglishAlphabetConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 956AA9571C20633D0030E55A /* EnglishAlphabetConfig.cpp */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		956AA9361C0C5DE00030E55A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		956AA9381C0C5DE00030E55A /* Ukkonen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ukkonen; sourceTree = BUILT_PRODUCTS_DIR; };
+		956AA93B1C0C5DE00030E55A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		956AA9451C0E28660030E55A /* UKSuffixTreeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UKSuffixTreeNode.cpp; path = ../UKSuffixTreeNode.cpp; sourceTree = "<group>"; };
+		956AA9461C0E28660030E55A /* UKSuffixTreeNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UKSuffixTreeNode.hpp; path = ../UKSuffixTreeNode.hpp; sourceTree = "<group>"; };
+		956AA94B1C0E297C0030E55A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		956AA94C1C0E59590030E55A /* UKSuffixTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UKSuffixTree.cpp; sourceTree = "<group>"; };
+		956AA94D1C0E59590030E55A /* UKSuffixTree.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UKSuffixTree.hpp; sourceTree = "<group>"; };
+		956AA94F1C2062B60030E55A /* ExplicitState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExplicitState.h; path = ../../../Kholopov/StudyingStuff/UkkonenLCS/include/ExplicitState.h; sourceTree = "<group>"; };
+		956AA9501C2062B60030E55A /* SuffixTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuffixTree.h; path = ../../../Kholopov/StudyingStuff/UkkonenLCS/include/SuffixTree.h; sourceTree = "<group>"; };
+		956AA9511C2062B60030E55A /* ExplicitState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExplicitState.cpp; path = ../../../Kholopov/StudyingStuff/UkkonenLCS/src/ExplicitState.cpp; sourceTree = "<group>"; };
+		956AA9521C2062B60030E55A /* SuffixTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SuffixTree.cpp; path = ../../../Kholopov/StudyingStuff/UkkonenLCS/src/SuffixTree.cpp; sourceTree = "<group>"; };
+		956AA9551C2063370030E55A /* EnglishAlphabetConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EnglishAlphabetConfig.h; path = ../../../Kholopov/StudyingStuff/AlphabetConfig/include/EnglishAlphabetConfig.h; sourceTree = "<group>"; };
+		956AA9561C2063370030E55A /* IAlphabetConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IAlphabetConfig.h; path = ../../../Kholopov/StudyingStuff/AlphabetConfig/include/IAlphabetConfig.h; sourceTree = "<group>"; };
+		956AA9571C20633D0030E55A /* EnglishAlphabetConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnglishAlphabetConfig.cpp; path = ../../../Kholopov/StudyingStuff/AlphabetConfig/src/EnglishAlphabetConfig.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		956AA9351C0C5DE00030E55A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		956AA92F1C0C5DE00030E55A = {
+			isa = PBXGroup;
+			children = (
+				956AA93A1C0C5DE00030E55A /* Ukkonen */,
+				956AA9391C0C5DE00030E55A /* Products */,
+				956AA9591C20C2500030E55A /* New Group */,
+			);
+			sourceTree = "<group>";
+		};
+		956AA9391C0C5DE00030E55A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				956AA9381C0C5DE00030E55A /* Ukkonen */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		956AA93A1C0C5DE00030E55A /* Ukkonen */ = {
+			isa = PBXGroup;
+			children = (
+				956AA9451C0E28660030E55A /* UKSuffixTreeNode.cpp */,
+				956AA9461C0E28660030E55A /* UKSuffixTreeNode.hpp */,
+				956AA94C1C0E59590030E55A /* UKSuffixTree.cpp */,
+				956AA94D1C0E59590030E55A /* UKSuffixTree.hpp */,
+				956AA94B1C0E297C0030E55A /* Constants.h */,
+				956AA93B1C0C5DE00030E55A /* main.cpp */,
+			);
+			path = Ukkonen;
+			sourceTree = "<group>";
+		};
+		956AA9591C20C2500030E55A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				956AA9571C20633D0030E55A /* EnglishAlphabetConfig.cpp */,
+				956AA9561C2063370030E55A /* IAlphabetConfig.h */,
+				956AA9551C2063370030E55A /* EnglishAlphabetConfig.h */,
+				956AA94F1C2062B60030E55A /* ExplicitState.h */,
+				956AA9501C2062B60030E55A /* SuffixTree.h */,
+				956AA9511C2062B60030E55A /* ExplicitState.cpp */,
+				956AA9521C2062B60030E55A /* SuffixTree.cpp */,
+			);
+			name = "New Group";
+			path = Ukkonen;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		956AA9371C0C5DE00030E55A /* Ukkonen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 956AA93F1C0C5DE00030E55A /* Build configuration list for PBXNativeTarget "Ukkonen" */;
+			buildPhases = (
+				956AA9341C0C5DE00030E55A /* Sources */,
+				956AA9351C0C5DE00030E55A /* Frameworks */,
+				956AA9361C0C5DE00030E55A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ukkonen;
+			productName = Ukkonen;
+			productReference = 956AA9381C0C5DE00030E55A /* Ukkonen */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		956AA9301C0C5DE00030E55A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Alexander Malyshev";
+				TargetAttributes = {
+					956AA9371C0C5DE00030E55A = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 956AA9331C0C5DE00030E55A /* Build configuration list for PBXProject "Ukkonen" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 956AA92F1C0C5DE00030E55A;
+			productRefGroup = 956AA9391C0C5DE00030E55A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				956AA9371C0C5DE00030E55A /* Ukkonen */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		956AA9341C0C5DE00030E55A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				956AA93C1C0C5DE00030E55A /* main.cpp in Sources */,
+				956AA9531C2062B60030E55A /* ExplicitState.cpp in Sources */,
+				956AA94E1C0E59590030E55A /* UKSuffixTree.cpp in Sources */,
+				956AA9581C20633D0030E55A /* EnglishAlphabetConfig.cpp in Sources */,
+				956AA9471C0E28660030E55A /* UKSuffixTreeNode.cpp in Sources */,
+				956AA9541C2062B60030E55A /* SuffixTree.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		956AA93D1C0C5DE00030E55A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		956AA93E1C0C5DE00030E55A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		956AA9401C0C5DE00030E55A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		956AA9411C0C5DE00030E55A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		956AA9331C0C5DE00030E55A /* Build configuration list for PBXProject "Ukkonen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				956AA93D1C0C5DE00030E55A /* Debug */,
+				956AA93E1C0C5DE00030E55A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		956AA93F1C0C5DE00030E55A /* Build configuration list for PBXNativeTarget "Ukkonen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				956AA9401C0C5DE00030E55A /* Debug */,
+				956AA9411C0C5DE00030E55A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 956AA9301C0C5DE00030E55A /* Project object */;
+}

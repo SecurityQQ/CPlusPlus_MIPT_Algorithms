@@ -45,7 +45,7 @@ T Array<T>::getElement(int index) {
 
 template <typename T>
 void Array<T>::push_back(T insertingElement) {
-    if (length == maxLength) resize();
+    if (length == maxLength)resize();
     buffer[length++] = insertingElement;
 }
 

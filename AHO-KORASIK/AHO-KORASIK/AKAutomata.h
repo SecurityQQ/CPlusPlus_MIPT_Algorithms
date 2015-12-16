@@ -8,18 +8,22 @@
 
 #ifndef AKAutomata_h
 #define AKAutomata_h
+#include "Constants.h"
+#include "AKNode.h"
 
+class AKNode;
 
 class AKAutomata {
 public:
     AKAutomata();
-    unsigned long long GetLetterId(char c);
-    unsigned long long GetAlphabetSize();
     
-private:
-    unsigned long long alphabetSize_;
-    std::unordered_map<char, unsigned long long> lettersCodes_;
+    AKNode *root();
+    
+    void addString(const std::string string);
+    void findPattern(IDType patternID);
+protected:
+    AKNode *_root;
+    std::vector<std::string> patterns;
 };
-
 
 #endif /* AKAutomata_h */

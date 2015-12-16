@@ -8,36 +8,37 @@
 
 #ifndef AKNode_h
 #define AKNode_h
+#include "Constants.h"
+#include <vector>
 
 class AKNode {
 public:
-    AKNode(AhoAutomata& automata, long long id, long long parentId, IAhoAutomataConfig& config, char symbol = '\0',
-                 long long stringId = NO_NODE);
-    long long GetChildId(char c);
-    long long GetId();
-    char GetSymbol();
-    bool IsString();
-    std::vector<long long>& GetStrings();
-    long long GetTransition(char c);
-    long long GetSuffixLinkId();
-    long long GetFastLinkId();
-    long long GetParentId();
-    void SetSuffixLinkId(long long id);
-    void SetFastLinkId(long long id);
-    void SetTransition(char c, long long transition);
-    void AddChild(char c, long long childId);
-    void MarkAsString(long long stringId);
+    AKNode(LiteralType symbol = Const::EmptySymbol(),  AKNode *parent = nullptr);
+    void addTerminateString(IDType stringID);
+    AKNode *getTransition(const LiteralType symbol);
+    AKNode *getChild(const LiteralType symbol);
+    AKNode *getSuffixLink();
+    AKNode *getCompressedSuffixLink();
+    std::vector<IDType> & getStringIDs();
+    
+    bool isRoot();
+    bool isTerminal();
 private:
-    long long id_;
-    char symbol_;
-    long long parentId_;
-    long long suffix_;
-    std::vector<long long> childs_;
-    std::vector<long long> transitions_;
-    std::vector<long long> string_;
-    long long fastSuffix_;
-    IAhoAutomataConfig& config_;
-    AhoAutomata& automata_;
+
+    LiteralType charToParent;
+    std::vector<AKNode *> childs;
+    std::vector<AKNode *> transitions;
+    AKNode *parent;
+    AKNode *suffixLink;
+    AKNode *compressedSuffixLink;
+    std::vector<IDType> patternsIDs;
+    
+    void    setTransition(const LiteralType symbol, AKNode *newValue);
+    void    setChild(AKNode *newValue);
+    void setTerminatingString(const IDType stringID);
+    AKNode *_nextTransition(AKNode *node, const LiteralType symbol);
+    friend class AKAutomata;
 };
+
 
 #endif /* AKNode_h */

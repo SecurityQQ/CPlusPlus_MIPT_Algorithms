@@ -409,11 +409,13 @@ void AhoMaskAutomata::FindTemplate(std::istream& input, std::ostream& output)
                 }
         }
     }
+    
     for(long long i = 0; patternSize_ - 1 +  i < subPatternCounter.size(); ++i)
         if(subPatternCounter[i] >= subPatternStartPosition_.size()) {
             output << i << " ";
             ++patternCounter;
         }
+    
     std::ios::sync_with_stdio(true);
 }
 

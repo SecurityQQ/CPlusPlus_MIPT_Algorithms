@@ -8,9 +8,19 @@
 
 #include <iostream>
 #include "IGOR.h"
+//#include "AKNode.h"
+#include "AKMaskAutomata.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    std::string pattern;
+    std::string textToProcess;
+    
+    std::cin>> pattern;
+    std::cin>> textToProcess;
+    
+    AKMaskAutomata blackNiggerAutomata(pattern);
+    
+    blackNiggerAutomata.processTextAndPrintResult(textToProcess);
+
     return 0;
 }
